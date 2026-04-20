@@ -27,7 +27,9 @@ void DrawO (RenderWindow& window, float PosX, float PosY)
 {
     int Radius = 100;
     CircleShape OLetter(Radius);
-    OLetter.setFillColor(Color::White);
+    OLetter.setFillColor(Color::Black);
+    OLetter.setOutlineThickness(10);
+    OLetter.setOutlineColor(Color::White);
     window.draw(OLetter);
 }
 
