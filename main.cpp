@@ -27,6 +27,8 @@ void DrawX ()
 {
     RectangleShape Line(Vector2f(2, 5));
     RectangleShape Line1(Vector2f(2, 5));
+    Line.rotate(45);
+    Line1.rotate(255);
 }
 
 void DrawO (RenderWindow& window, Vector2f Pos)
