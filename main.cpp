@@ -25,18 +25,19 @@ void workerThread() {
 
 void DrawX (RenderWindow& window, Vector2f pos)
 {
-    RectangleShape Line(Vector2f(2, 5));
-    RectangleShape Line1(Vector2f(2, 5));
+    Vector2f LineSize(10, 300);
+    RectangleShape Line(LineSize);
+    RectangleShape Line1(LineSize);
 
     Line.rotate(45);
-    Line1.rotate(255);
+    Line1.rotate(-45);
 
+    Line.setOrigin(LineSize.x / 2.0f, LineSize.y / 2.0f);
+    Line1.setOrigin(LineSize.x / 2.0f, LineSize.y / 2.0f);
     Line.setFillColor(Color::White);
     Line1.setFillColor(Color::White);
-
     Line.setPosition(pos);
     Line1.setPosition(pos);
-
     window.draw(Line);
     window.draw(Line1);
 }
@@ -46,6 +47,7 @@ void DrawO (RenderWindow& window, Vector2f Pos)
     int Radius = 100;
     CircleShape OLetter(Radius);
     OLetter.setPosition(Pos);
+    OLetter.setOrigin(Radius, Radius);
     OLetter.setFillColor(Color::Black);
     OLetter.setOutlineThickness(10);
     OLetter.setOutlineColor(Color::White);
@@ -80,7 +82,7 @@ int main() {
     RenderWindow window(VideoMode(800, 800), "PIX");
 
     Vector2u size = window.getSize();
-    Vector2f Pos[] = {Vector2f(35 ,30), Vector2f(35 + 1/3 * size.x, 30), Vector2f()};
+    Vector2f Pos[] = {Vector2f(35 ,30), Vector2f(35 + 1.0f/3.0f * size.x, 30), Vector2f()};
 
     thread worker(workerThread);  
     Event event;
@@ -94,6 +96,7 @@ int main() {
         window.clear(Color::Black);
         Drawbord(window);
         DrawX(window, Pos[1]);
+        DrawO(window, Pos[1]);
         window.display();
     }
 
