@@ -23,12 +23,16 @@ void workerThread() {
     }
 }
 
-void DrawX ()
+void DrawX (RenderWindow& window, Vector2f pos)
 {
     RectangleShape Line(Vector2f(2, 5));
     RectangleShape Line1(Vector2f(2, 5));
+
     Line.rotate(45);
     Line1.rotate(255);
+
+    Line.setPosition(pos);
+    Line1.setPosition(pos);
 }
 
 void DrawO (RenderWindow& window, Vector2f Pos)
@@ -83,8 +87,7 @@ int main() {
 
         window.clear(Color::Black);
         Drawbord(window);
-        DrawO(window, Pos[1]);
-        // DrawO(window, Pos[2]);
+        DrawX(window, Pos[1]);
         window.display();
     }
 
