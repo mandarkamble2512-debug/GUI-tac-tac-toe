@@ -78,25 +78,34 @@ void Drawbord(RenderWindow& window)
     window.draw(bord3);
 }
 
-int main() {
+int main() 
+{
     RenderWindow window(VideoMode(800, 800), "PIX");
 
     Vector2u size = window.getSize();
-    Vector2f Pos[] = {Vector2f(35 ,30), Vector2f(35 + 1.0f/3.0f * size.x, 30), Vector2f()};
+    Vector2f Pos[] = // for defining the cordinates for the X or O
+        {
+        Vector2f(130 , 130),                                           // 0
+        Vector2f((Pos[0].x + (size.x * 1.0f/3.0f)) + 8, Pos[0].y),     // 1
+        Vector2f(Pos[1].x + (size.x * 1.0f/3.0f), Pos[0].y)            // 2      
+        };
 
     thread worker(workerThread);  
     Event event;
-    while (running && window.isOpen()) {
-        while (window.pollEvent(event)) {
-            if (event.type == Event::Closed) {
+    while (running && window.isOpen()) 
+    {
+        while (window.pollEvent(event)) 
+        {
+            if (event.type == Event::Closed) 
+            {
                 running = false;
             }
         }
 
         window.clear(Color::Black);
         Drawbord(window);
-        DrawX(window, Pos[1]);
-        DrawO(window, Pos[1]);
+        // DrawX(window, Pos[1]);
+        DrawO(window, Pos[2]);
         window.display();
     }
 
