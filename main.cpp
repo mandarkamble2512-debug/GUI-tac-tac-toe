@@ -31,8 +31,14 @@ void DrawX (RenderWindow& window, Vector2f pos)
     Line.rotate(45);
     Line1.rotate(255);
 
+    Line.setFillColor(Color::White);
+    Line1.setFillColor(Color::White);
+
     Line.setPosition(pos);
     Line1.setPosition(pos);
+
+    window.draw(Line);
+    window.draw(Line1);
 }
 
 void DrawO (RenderWindow& window, Vector2f Pos)
