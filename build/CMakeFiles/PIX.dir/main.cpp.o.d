@@ -1,5 +1,5 @@
 CMakeFiles/PIX.dir/main.cpp.o: \
- /home/mandar/Documents/full\ projects/c++/pixel\ art\ creater/main.cpp \
+ /home/mandar/Documents/full\ projects/c++/GUI\ tac\ tac\ toe/main.cpp \
  /usr/include/stdc-predef.h /usr/include/SFML/Graphics.hpp \
  /usr/include/SFML/Window.hpp /usr/include/SFML/System.hpp \
  /usr/include/SFML/Config.hpp /usr/include/SFML/System/Clock.hpp \

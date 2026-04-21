@@ -1,3 +1,3 @@
-/home/mandar/Documents/full projects/c++/pixel art creater/build/CMakeFiles/PIX.dir
-/home/mandar/Documents/full projects/c++/pixel art creater/build/CMakeFiles/edit_cache.dir
-/home/mandar/Documents/full projects/c++/pixel art creater/build/CMakeFiles/rebuild_cache.dir
+/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles/PIX.dir
+/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles/edit_cache.dir
+/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles/rebuild_cache.dir

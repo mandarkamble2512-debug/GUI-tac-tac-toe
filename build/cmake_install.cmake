@@ -1,4 +1,4 @@
-# Install script for directory: /home/mandar/Documents/full projects/c++/pixel art creater
+# Install script for directory: /home/mandar/Documents/full projects/c++/GUI tac tac toe
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,7 +45,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/mandar/Documents/full projects/c++/pixel art creater/build/install_local_manifest.txt"
+  file(WRITE "/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -61,6 +61,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/mandar/Documents/full projects/c++/pixel art creater/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

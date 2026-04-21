@@ -27,6 +27,7 @@ void DrawO (RenderWindow& window, float PosX, float PosY)
 {
     int Radius = 100;
     CircleShape OLetter(Radius);
+    OLetter.setPosition(PosX, PosY);
     OLetter.setFillColor(Color::Black);
     OLetter.setOutlineThickness(10);
     OLetter.setOutlineColor(Color::White);
@@ -72,7 +73,7 @@ int main() {
 
         window.clear(Color::Black);
         Drawbord(window);
-        // DrawO(window, 0, 0);
+        DrawO(window, 100, 100);
         window.display();
     }
 
