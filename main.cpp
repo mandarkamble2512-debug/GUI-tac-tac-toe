@@ -23,11 +23,17 @@ void workerThread() {
     }
 }
 
-void DrawO (RenderWindow& window, float PosX, float PosY)
+void DrawX ()
+{
+    RectangleShape Line(Vector2f(2, 5));
+    RectangleShape Line1(Vector2f(2, 5));
+}
+
+void DrawO (RenderWindow& window, Vector2f Pos)
 {
     int Radius = 100;
     CircleShape OLetter(Radius);
-    OLetter.setPosition(PosX, PosY);
+    OLetter.setPosition(Pos);
     OLetter.setFillColor(Color::Black);
     OLetter.setOutlineThickness(10);
     OLetter.setOutlineColor(Color::White);
@@ -61,8 +67,10 @@ void Drawbord(RenderWindow& window)
 int main() {
     RenderWindow window(VideoMode(800, 800), "PIX");
 
-    thread worker(workerThread);  
+    Vector2u size = window.getSize();
+    Vector2f Pos[] = {Vector2f(35 ,30), Vector2f(35 + 1/3 * size.x, 30), Vector2f()};
 
+    thread worker(workerThread);  
     Event event;
     while (running && window.isOpen()) {
         while (window.pollEvent(event)) {
@@ -73,7 +81,8 @@ int main() {
 
         window.clear(Color::Black);
         Drawbord(window);
-        DrawO(window, 100, 100);
+        DrawO(window, Pos[1]);
+        // DrawO(window, Pos[2]);
         window.display();
     }
 
