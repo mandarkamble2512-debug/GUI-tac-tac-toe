@@ -108,7 +108,7 @@ int main()
                 running = false;
             }
         }
-        window.clear(Color::Black);
+        window.clear(Color::Black); // put the rendering code ONLY after this
         for (short i = 0; i <= 8; i++)
         {
            DrawO(window, Pos[i]);
