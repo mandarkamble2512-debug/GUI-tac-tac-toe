@@ -83,12 +83,19 @@ int main()
     RenderWindow window(VideoMode(800, 800), "PIX");
 
     Vector2u size = window.getSize();
-    Vector2f Pos[] = // for defining the cordinates for the X or O
+    Vector2f Pos[9] = // for defining the cordinates for the X or O
         {
         Vector2f(130 , 130),                                           // 0
         Vector2f((Pos[0].x + (size.x * 1.0f/3.0f)) + 8, Pos[0].y),     // 1
-        Vector2f(Pos[1].x + (size.x * 1.0f/3.0f), Pos[0].y)            // 2      
+        Vector2f(Pos[1].x + (size.x * 1.0f/3.0f), Pos[0].y),           // 2
+        Vector2f(Pos[0].x, Pos[0].y + (1.0f/3.0f * size.y)),           // 3
+        Vector2f(Pos[1].x, Pos[3].y),                                  // 4
+        Vector2f(Pos[2].x, Pos[3].y),                                  // 5
+        Vector2f(Pos[0].x, Pos[3].y + (size.x * 1.0f/3.0f)),           // 6
+        Vector2f(Pos[1].x, Pos[6].y),                                  // 7
+        Vector2f(Pos[2].x, Pos[6].y)                                   // 8
         };
+    short LenthPos = std::size(Pos);
 
     thread worker(workerThread);  
     Event event;
@@ -104,8 +111,6 @@ int main()
 
         window.clear(Color::Black);
         Drawbord(window);
-        // DrawX(window, Pos[1]);
-        DrawO(window, Pos[2]);
         window.display();
     }
 
