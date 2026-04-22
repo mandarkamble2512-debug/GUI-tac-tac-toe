@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = "/home/mandar/Documents/full projects/c++/GUI tac tac toe/bui
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named PIX
+# Target rules for targets named TIC
 
 # Build rule for target.
-PIX: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PIX
-.PHONY : PIX
+TIC: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TIC
+.PHONY : TIC
 
 # fast build rule for target.
-PIX/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PIX.dir/build.make CMakeFiles/PIX.dir/build
-.PHONY : PIX/fast
+TIC/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/build
+.PHONY : TIC/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PIX.dir/build.make CMakeFiles/PIX.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -142,7 +142,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PIX.dir/build.make CMakeFiles/PIX.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -150,7 +150,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PIX.dir/build.make CMakeFiles/PIX.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -161,7 +161,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... PIX"
+	@echo "... TIC"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

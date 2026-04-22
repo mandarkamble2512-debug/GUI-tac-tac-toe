@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/PIX.dir/link.d CMakeFiles/PIX.dir/main.cpp.o -o PIX  -lsfml-graphics -lsfml-window -lsfml-system

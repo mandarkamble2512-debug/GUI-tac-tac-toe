@@ -63,11 +63,11 @@ CMAKE_BINARY_DIR = "/home/mandar/Documents/full projects/c++/GUI tac tac toe/bui
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/PIX.dir/all
+all: CMakeFiles/TIC.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/PIX.dir/codegen
+codegen: CMakeFiles/TIC.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -75,40 +75,40 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/PIX.dir/clean
+clean: CMakeFiles/TIC.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/PIX.dir
+# Target rules for target CMakeFiles/TIC.dir
 
 # All Build rule for target.
-CMakeFiles/PIX.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PIX.dir/build.make CMakeFiles/PIX.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PIX.dir/build.make CMakeFiles/PIX.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" --progress-num=1,2 "Built target PIX"
-.PHONY : CMakeFiles/PIX.dir/all
+CMakeFiles/TIC.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" --progress-num=1,2 "Built target TIC"
+.PHONY : CMakeFiles/TIC.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/PIX.dir/rule: cmake_check_build_system
+CMakeFiles/TIC.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/PIX.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/TIC.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" 0
-.PHONY : CMakeFiles/PIX.dir/rule
+.PHONY : CMakeFiles/TIC.dir/rule
 
 # Convenience name for target.
-PIX: CMakeFiles/PIX.dir/rule
-.PHONY : PIX
+TIC: CMakeFiles/TIC.dir/rule
+.PHONY : TIC
 
 # codegen rule for target.
-CMakeFiles/PIX.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PIX.dir/build.make CMakeFiles/PIX.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" --progress-num=1,2 "Finished codegen for target PIX"
-.PHONY : CMakeFiles/PIX.dir/codegen
+CMakeFiles/TIC.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" --progress-num=1,2 "Finished codegen for target TIC"
+.PHONY : CMakeFiles/TIC.dir/codegen
 
 # clean rule for target.
-CMakeFiles/PIX.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PIX.dir/build.make CMakeFiles/PIX.dir/clean
-.PHONY : CMakeFiles/PIX.dir/clean
+CMakeFiles/TIC.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/clean
+.PHONY : CMakeFiles/TIC.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -80,7 +80,7 @@ void Drawbord(RenderWindow& window)
 
 int main() 
 {
-    RenderWindow window(VideoMode(800, 800), "PIX");
+    RenderWindow window(VideoMode(800, 800), "TIC");
 
     Vector2u size = window.getSize();
     Vector2f Pos[9] = // for defining the cordinates for the X or O
@@ -108,8 +108,13 @@ int main()
                 running = false;
             }
         }
-
         window.clear(Color::Black);
+        for (short i = 0; i <= 8; i++)
+        {
+           DrawO(window, Pos[i]);
+           DrawX(window,Pos[i]);
+        }
+        
         Drawbord(window);
         window.display();
     }

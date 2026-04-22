@@ -1,8 +1,8 @@
-PIX: \
+TIC: \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o \
-  CMakeFiles/PIX.dir/main.cpp.o \
+  CMakeFiles/TIC.dir/main.cpp.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libsfml-graphics.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libsfml-window.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libsfml-system.so \
@@ -60,7 +60,7 @@ PIX: \
 
 /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o:
 
-CMakeFiles/PIX.dir/main.cpp.o:
+CMakeFiles/TIC.dir/main.cpp.o:
 
 /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libsfml-graphics.so:
 
