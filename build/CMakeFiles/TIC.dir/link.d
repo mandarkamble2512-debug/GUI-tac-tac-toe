@@ -3,9 +3,9 @@ TIC: \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o \
   CMakeFiles/TIC.dir/main.cpp.o \
-  /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libsfml-graphics.so \
-  /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libsfml-window.so \
-  /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libsfml-system.so \
+  /usr/lib64/libsfml-graphics.so.2.6.2 \
+  /usr/lib64/libsfml-window.so.2.6.2 \
+  /usr/lib64/libsfml-system.so.2.6.2 \
   /usr/lib/gcc/x86_64-redhat-linux/15/libstdc++.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
@@ -62,11 +62,11 @@ TIC: \
 
 CMakeFiles/TIC.dir/main.cpp.o:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libsfml-graphics.so:
+/usr/lib64/libsfml-graphics.so.2.6.2:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libsfml-window.so:
+/usr/lib64/libsfml-window.so.2.6.2:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libsfml-system.so:
+/usr/lib64/libsfml-system.so.2.6.2:
 
 /usr/lib/gcc/x86_64-redhat-linux/15/libstdc++.so:
 

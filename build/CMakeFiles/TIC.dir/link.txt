@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/TIC.dir/link.d CMakeFiles/TIC.dir/main.cpp.o -o TIC  -lsfml-graphics -lsfml-window -lsfml-system
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/TIC.dir/link.d CMakeFiles/TIC.dir/main.cpp.o -o TIC  /usr/lib64/libsfml-graphics.so.2.6.2 /usr/lib64/libsfml-window.so.2.6.2 /usr/lib64/libsfml-system.so.2.6.2

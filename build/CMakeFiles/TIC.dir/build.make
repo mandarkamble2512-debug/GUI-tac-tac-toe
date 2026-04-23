@@ -96,6 +96,9 @@ TIC_EXTERNAL_OBJECTS =
 TIC: CMakeFiles/TIC.dir/main.cpp.o
 TIC: CMakeFiles/TIC.dir/build.make
 TIC: CMakeFiles/TIC.dir/compiler_depend.ts
+TIC: /usr/lib64/libsfml-graphics.so.2.6.2
+TIC: /usr/lib64/libsfml-window.so.2.6.2
+TIC: /usr/lib64/libsfml-system.so.2.6.2
 TIC: CMakeFiles/TIC.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable TIC"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TIC.dir/link.txt --verbose=$(VERBOSE)
