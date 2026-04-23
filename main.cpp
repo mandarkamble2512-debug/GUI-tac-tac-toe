@@ -1,8 +1,11 @@
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <thread>
 #include <atomic>
 #include <chrono>
 
+using std::cout;
+using std::endl;
 using std::atomic;
 using sf::RenderWindow;
 using sf::VideoMode;
@@ -14,6 +17,7 @@ using std::thread;
 using std::chrono::milliseconds;  
 using sf::Vector2u;
 using sf::CircleShape;
+using sf::Font;
 
 atomic<bool> running(true);
 
@@ -21,6 +25,15 @@ void workerThread() {
     while (running) {
         std::this_thread::sleep_for(milliseconds(100));
     }
+}
+
+void DrawText () 
+{
+    Font mainFont;
+    if (!mainFont.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) {
+        cout<<"Failed to load font from /usr/share/fonts/gnu-free/FreeSans.ttf"<<endl;
+    }
+
 }
 
 void DrawX (RenderWindow& window, Vector2f pos)
@@ -83,7 +96,7 @@ int main()
     RenderWindow window(VideoMode(800, 800), "TIC");
 
     Vector2u size = window.getSize();
-    Vector2f Pos[9] = // for defining the cordinates for the X or O
+    const Vector2f Pos[9] = // for defining the cordinates for the X or O
         {
         Vector2f(130 , 130),                                           // 0
         Vector2f((Pos[0].x + (size.x * 1.0f/3.0f)) + 8, Pos[0].y),     // 1
@@ -111,8 +124,7 @@ int main()
         window.clear(Color::Black); // put the rendering code ONLY after this
         for (short i = 0; i <= 8; i++)
         {
-           DrawO(window, Pos[i]);
-           DrawX(window,Pos[i]);
+
         }
         
         Drawbord(window);
