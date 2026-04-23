@@ -5,6 +5,7 @@
 #include <atomic>
 #include <chrono>
 
+using std::ref;
 using std::cout;
 using std::endl;
 using std::atomic;
@@ -21,8 +22,59 @@ using sf::Vector2u;
 using sf::CircleShape;
 using sf::Font;
 using sf::Text;
+using sf::Keyboard;
 
 atomic<bool> running(true);
+
+// void ComputerMove(RenderWindow& window, Event event, char Piece[])
+// {
+
+// }
+
+void PlayerMove (RenderWindow& window, Event event, char Piece[])
+{
+    short Value;
+
+    if (event.type == Event::KeyPressed)
+    {
+        switch (event.key.code)
+        {
+        case  Keyboard::Num1:
+            Value = 1;
+            break;
+        case  Keyboard::Num2:
+            Value = 2;
+            break;
+        case Keyboard::Num3:
+            Value = 3;
+            break;
+        case Keyboard::Num4:
+            Value = 4;
+            break;
+        case Keyboard::Num5:
+            Value = 5;
+            break;
+        case Keyboard::Num6:
+            Value = 6;
+            break;
+        case Keyboard::Num7:
+            Value = 7;
+            break;
+        case Keyboard::Num8:
+            Value = 8;
+            break;
+        case Keyboard::Num9:
+            Value = 9;
+            break;
+
+        }
+    }
+
+    if (Piece[Value] != 'X' && Piece[Value] != 'O')
+    {
+        Piece[Value] = 'X';
+    }
+}
 
 void workerThread() {
     while (running) {
@@ -115,7 +167,7 @@ int main()
         Vector2f(Pos[2].x, Pos[6].y)                                   // 8
         };
     short LenthPos = std::size(Pos);
-    thread worker(workerThread);  
+    thread worker(workerThread);
     Event event;
     Font font;
     if (!font.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) 
