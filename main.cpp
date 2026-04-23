@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <SFML/Graphics.hpp>
 #include <thread>
 #include <atomic>
@@ -7,6 +8,7 @@
 using std::cout;
 using std::endl;
 using std::atomic;
+using std::string;
 using sf::RenderWindow;
 using sf::VideoMode;
 using sf::Event;
@@ -18,6 +20,7 @@ using std::chrono::milliseconds;
 using sf::Vector2u;
 using sf::CircleShape;
 using sf::Font;
+using sf::Text;
 
 atomic<bool> running(true);
 
@@ -27,13 +30,16 @@ void workerThread() {
     }
 }
 
-void DrawText () 
+void DrawText (RenderWindow& window, Vector2f pos, char Piece, const Font& font) 
 {
-    Font mainFont;
-    if (!mainFont.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) {
-        cout<<"Failed to load font from /usr/share/fonts/gnu-free/FreeSans.ttf"<<endl;
-    }
-
+    Text text;
+    short TextSize = 130;
+    text.setFont(font);
+    text.setString(Piece);
+    text.setFillColor(Color::White);
+    text.setCharacterSize(TextSize);
+    text.setPosition(pos);
+    window.draw(text);
 }
 
 void DrawX (RenderWindow& window, Vector2f pos)
@@ -94,12 +100,12 @@ void Drawbord(RenderWindow& window)
 int main() 
 {
     RenderWindow window(VideoMode(800, 800), "TIC");
-
     Vector2u size = window.getSize();
+    char Piece[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     const Vector2f Pos[9] = // for defining the cordinates for the X or O
         {
         Vector2f(130 , 130),                                           // 0
-        Vector2f((Pos[0].x + (size.x * 1.0f/3.0f)) + 8, Pos[0].y),     // 1
+        Vector2f((Pos[0].x + (size.x * 1.0f/3.0f)), Pos[0].y),     // 1
         Vector2f(Pos[1].x + (size.x * 1.0f/3.0f), Pos[0].y),           // 2
         Vector2f(Pos[0].x, Pos[0].y + (1.0f/3.0f * size.y)),           // 3
         Vector2f(Pos[1].x, Pos[3].y),                                  // 4
@@ -109,9 +115,14 @@ int main()
         Vector2f(Pos[2].x, Pos[6].y)                                   // 8
         };
     short LenthPos = std::size(Pos);
-
     thread worker(workerThread);  
     Event event;
+    Font font;
+    if (!font.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) 
+    {
+        cout<<"Failed to load font from /usr/share/fonts/gnu-free/FreeSans.ttf"<<endl;
+    }
+
     while (running && window.isOpen()) 
     {
         while (window.pollEvent(event)) 
@@ -124,7 +135,7 @@ int main()
         window.clear(Color::Black); // put the rendering code ONLY after this
         for (short i = 0; i <= 8; i++)
         {
-
+            DrawText(window, Pos[i], Piece[i], font);
         }
         
         Drawbord(window);
