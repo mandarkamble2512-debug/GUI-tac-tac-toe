@@ -26,15 +26,26 @@ using sf::Keyboard;
 
 atomic<bool> running(true);
 
-// void ComputerMove(RenderWindow& window, Event event, char Piece[])
-// {
-
-// }
+void ComputerMove(RenderWindow& window, Event event, char Piece[])
+{
+    short zero = 0;
+    if (Piece[0] == 'X' && Piece[1] == 'X' && Piece[2] != 'X')
+    {
+        Piece[2] = 'O';
+    }
+    else if (Piece[0] == 'X' && Piece[3] == 'X' && Piece[6] != 'X')
+    {
+        Piece[6] = 'O';
+    }
+    else if (Piece[0] == 'X' && Piece[4] == 'X' && Piece[8] != 'X')
+    {
+        Piece[8];
+    }
+}
 
 void PlayerMove (RenderWindow& window, Event event, char Piece[])
 {
-    short Value;
-
+    short Value = 0;
     if (event.type == Event::KeyPressed)
     {
         switch (event.key.code)
@@ -70,9 +81,9 @@ void PlayerMove (RenderWindow& window, Event event, char Piece[])
         }
     }
 
-    if (Piece[Value] != 'X' && Piece[Value] != 'O')
+    if (Piece[Value - 1] != 'X' && Piece[Value -1] != 'O')
     {
-        Piece[Value] = 'X';
+        Piece[Value -1] = 'X';
     }
 }
 
