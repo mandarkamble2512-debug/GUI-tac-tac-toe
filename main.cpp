@@ -26,64 +26,96 @@ using sf::Keyboard;
 
 atomic<bool> running(true);
 
-void ComputerMove(RenderWindow& window, Event event, char Piece[])
+void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer uses O
 {
-    short zero = 0;
-    if (Piece[0] == 'X' && Piece[1] == 'X' && Piece[2] != 'X')
+    bool IsPlayed = false;
+    if (Piece[0] == 'X')
     {
-        Piece[2] = 'O';
-    }
-    else if (Piece[0] == 'X' && Piece[3] == 'X' && Piece[6] != 'X')
-    {
-        Piece[6] = 'O';
-    }
-    else if (Piece[0] == 'X' && Piece[4] == 'X' && Piece[8] != 'X')
-    {
-        Piece[8];
-    }
-}
-
-void PlayerMove (RenderWindow& window, Event event, char Piece[])
-{
-    short Value = 0;
-    if (event.type == Event::KeyPressed)
-    {
-        switch (event.key.code)
+        if (Piece[1] == 'X' && Piece[2] != 'X' && Piece[2] != 'O')
         {
-        case  Keyboard::Num1:
-            Value = 1;
-            break;
-        case  Keyboard::Num2:
-            Value = 2;
-            break;
-        case Keyboard::Num3:
-            Value = 3;
-            break;
-        case Keyboard::Num4:
-            Value = 4;
-            break;
-        case Keyboard::Num5:
-            Value = 5;
-            break;
-        case Keyboard::Num6:
-            Value = 6;
-            break;
-        case Keyboard::Num7:
-            Value = 7;
-            break;
-        case Keyboard::Num8:
-            Value = 8;
-            break;
-        case Keyboard::Num9:
-            Value = 9;
-            break;
-
+            Piece[2] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[3] == 'X' && Piece[6] != 'X' && Piece[6] != 'O')
+        {
+            Piece[6] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[4] == 'X' && Piece[8] != 'X' && Piece[6] != 'O')
+        {
+            Piece[8] == 'O';
+            IsPlayed = true;
         }
     }
 
-    if (Piece[Value - 1] != 'X' && Piece[Value -1] != 'O')
+    if (!IsPlayed && Piece[1] == 'X')
     {
-        Piece[Value -1] = 'X';
+        if (Piece[0] == 'X' && Piece[2] != 'X' && Piece[2] != 'O')
+        {
+            Piece[2] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[2] == 'X' && Piece[0] != 'X' && Piece[0] != 'O')
+        {
+            Piece[0] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[4] == 'X' && Piece[7] != 'X' && Piece[7] != 'O')
+        {
+            Piece[7] = 'O';
+            IsPlayed = true;
+        }        
+    }
+}
+
+void PlayerMove (RenderWindow& window, Event event, char Piece[]) // player uses X
+{
+    short Value = 0;
+    while (Value == 0)
+    {
+        if (event.type == Event::KeyPressed)
+        {
+            switch (event.key.code)
+            {
+                case  Keyboard::Num1:
+                    Value = 1;
+                    break;
+                case  Keyboard::Num2:
+                    Value = 2;
+                    break;
+                case Keyboard::Num3:
+                    Value = 3;
+                    break;
+                case Keyboard::Num4:
+                    Value = 4;
+                    break;
+                case Keyboard::Num5:
+                    Value = 5;
+                    break;
+                case Keyboard::Num6:
+                    Value = 6;
+                    break;
+                case Keyboard::Num7:
+                    Value = 7;
+                    break;
+                case Keyboard::Num8:
+                    Value = 8;
+                    break;
+                case Keyboard::Num9:
+                    Value = 9;
+                    break;
+
+            }
+        }
+
+        if (Piece[Value - 1] != 'X' && Piece[Value -1] != 'O')
+        {
+            Piece[Value -1] = 'X';
+        }
+        else 
+        {
+            Value = 0;
+        }
     }
 }
 
