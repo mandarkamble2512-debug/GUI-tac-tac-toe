@@ -22,8 +22,6 @@ A gui tac toe made with SFML
     -you skipped the section above as told
     -you tried and failed with an error
 2) either way you came here now to make this code runable you have to change the 20th line from the main function which is like 
-```bash if (!font.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) cout<<"Failed to load font from /usr/share/fonts/gnu-free/FreeSans.ttf"<<endl;
-```
+```"/usr/share/fonts/gnu-free/FreeSans.ttf"```
 change the path to like  
-
-```bash C:\Windows\Fonts\FreeSans.ttf```
+```C:\Windows\Fonts\FreeSans.ttf```
