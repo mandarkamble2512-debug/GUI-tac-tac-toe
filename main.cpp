@@ -245,10 +245,7 @@ int main()
     thread worker(workerThread);
     Event event;
     Font font;
-    if (!font.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) 
-    {
-        cout<<"Failed to load font from /usr/share/fonts/gnu-free/FreeSans.ttf"<<endl;
-    }
+    if (!font.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) cout<<"Failed to load font from /usr/share/fonts/gnu-free/FreeSans.ttf"<<endl;
 
     while (running && window.isOpen()) 
     {
