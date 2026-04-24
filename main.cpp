@@ -41,9 +41,9 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
             Piece[6] = 'O';
             IsPlayed = true;
         }
-        else if (Piece[4] == 'X' && Piece[8] != 'X' && Piece[6] != 'O')
+        else if (Piece[4] == 'X' && Piece[8] != 'X' && Piece[8] != 'O')
         {
-            Piece[8] == 'O';
+            Piece[8] = 'O';
             IsPlayed = true;
         }
     }
@@ -66,6 +66,12 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
             IsPlayed = true;
         }        
     }
+
+    if (!IsPlayed && Piece[2] == 'X')
+    {
+        
+    }
+    
 }
 
 void PlayerMove (RenderWindow& window, Event event, char Piece[]) // player uses X
