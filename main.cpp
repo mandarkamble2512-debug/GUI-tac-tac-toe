@@ -26,22 +26,35 @@ using sf::Keyboard;
 
 atomic<bool> running(true);
 
+bool FindIsSpaceOccupied (short index, char Piece[])
+{
+    if (Piece[index] != 'X' && Piece[index] != 'O')
+    {
+        return true;
+    }
+    else 
+    {
+        return false;
+    }
+    
+}
+
 void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer uses O
 {
     bool IsPlayed = false;
     if (Piece[0] == 'X')
     {
-        if (Piece[1] == 'X' && Piece[2] != 'X' && Piece[2] != 'O')
+        if (Piece[1] == 'X' && FindIsSpaceOccupied(2, Piece))
         {
             Piece[2] = 'O';
             IsPlayed = true;
         }
-        else if (Piece[3] == 'X' && Piece[6] != 'X' && Piece[6] != 'O')
+        else if (Piece[3] == 'X' && FindIsSpaceOccupied(6, Piece))
         {
             Piece[6] = 'O';
             IsPlayed = true;
         }
-        else if (Piece[4] == 'X' && Piece[8] != 'X' && Piece[8] != 'O')
+        else if (Piece[4] == 'X' && FindIsSpaceOccupied(8, Piece))
         {
             Piece[8] = 'O';
             IsPlayed = true;
@@ -50,17 +63,17 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
 
     if (!IsPlayed && Piece[1] == 'X')
     {
-        if (Piece[0] == 'X' && Piece[2] != 'X' && Piece[2] != 'O')
+        if (Piece[0] == 'X' && FindIsSpaceOccupied(2, Piece))
         {
             Piece[2] = 'O';
             IsPlayed = true;
         }
-        else if (Piece[2] == 'X' && Piece[0] != 'X' && Piece[0] != 'O')
+        else if (Piece[2] == 'X' && FindIsSpaceOccupied(0, Piece))
         {
             Piece[0] = 'O';
             IsPlayed = true;
         }
-        else if (Piece[4] == 'X' && Piece[7] != 'X' && Piece[7] != 'O')
+        else if (Piece[4] == 'X' && FindIsSpaceOccupied(7, Piece))
         {
             Piece[7] = 'O';
             IsPlayed = true;
@@ -69,6 +82,19 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
 
     if (!IsPlayed && Piece[2] == 'X')
     {
+        if (Piece[1] == 'X' && FindIsSpaceOccupied(0, Piece))
+        {
+            Piece[0] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[5] == 'X' && FindIsSpaceOccupied(8, Piece))
+        {
+            Piece[8] = 'X'; 
+        }
+        else if (Piece[4] == 'X' && FindIsSpaceOccupied(5, Piece))
+        {
+            Piece[5] = 'X';
+        }
         
     }
     
