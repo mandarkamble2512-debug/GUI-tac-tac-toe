@@ -26,6 +26,24 @@ using sf::Keyboard;
 
 atomic<bool> running(true);
 
+short inputHandler(Event event)
+{
+    if (event.type == Event::KeyPressed)
+    {
+        if (event.key.code >= Keyboard::Num1 && event.key.code <= Keyboard::Num9)
+        {
+            return (event.key.code - Keyboard::Num1) + 1;
+        }
+        
+        if (event.key.code >= Keyboard::Numpad1 && event.key.code <= Keyboard::Numpad9)
+        {
+            return (event.key.code - Keyboard::Numpad1) + 1;
+        }
+    }
+
+    return 0;
+}
+
 bool FindIsSpaceOccupied (short index, char Piece[])
 {
     if (Piece[index] != 'X' && Piece[index] != 'O')
@@ -46,222 +64,150 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
         if (Piece[1] == 'X' && FindIsSpaceOccupied(2, Piece))
         {
             Piece[2] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[3] == 'X' && FindIsSpaceOccupied(6, Piece))
         {
             Piece[6] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(8, Piece))
         {
             Piece[8] = 'O';
-            IsPlayed = true;
         }
     }
-
-    if (!IsPlayed && Piece[1] == 'X')
-    {
-        if (Piece[0] == 'X' && FindIsSpaceOccupied(2, Piece))
+    else if (Piece[1] == 'X')
         {
-            Piece[2] = 'O';
-            IsPlayed = true;
+            if (Piece[0] == 'X' && FindIsSpaceOccupied(2, Piece))
+            {
+                Piece[2] = 'O';
+            }
+            else if (Piece[2] == 'X' && FindIsSpaceOccupied(0, Piece))
+            {
+                Piece[0] = 'O';
+            }
+            else if (Piece[4] == 'X' && FindIsSpaceOccupied(7, Piece))
+            {
+                Piece[7] = 'O';
+            }        
         }
-        else if (Piece[2] == 'X' && FindIsSpaceOccupied(0, Piece))
-        {
-            Piece[0] = 'O';
-            IsPlayed = true;
-        }
-        else if (Piece[4] == 'X' && FindIsSpaceOccupied(7, Piece))
-        {
-            Piece[7] = 'O';
-            IsPlayed = true;
-        }        
-    }
-
-    if (!IsPlayed && Piece[2] == 'X')
+    else if (Piece[2] == 'X')
     {
         if (Piece[1] == 'X' && FindIsSpaceOccupied(0, Piece))
         {
             Piece[0] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[5] == 'X' && FindIsSpaceOccupied(8, Piece))
         {
             Piece[8] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(6, Piece))
         {
             Piece[6] = 'O';
-            IsPlayed = true;
         }
     }
-
-    if (!IsPlayed && Piece[3] == 'X')
+    else if (Piece[3] == 'X')
     {
         if (Piece[0] == 'X' && FindIsSpaceOccupied(6 ,Piece))
         {
             Piece[6] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(5 ,Piece))
         {
             Piece[5] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[6] == 'X' && FindIsSpaceOccupied(0 , Piece))
         {
             Piece[0] = 'O';
-            IsPlayed = true;
         }
     }
-    
-    if (!IsPlayed && Piece[4] == 'X')
+    else  if (Piece[4] == 'X')
     {
         if (Piece[1] == 'X' && FindIsSpaceOccupied(7, Piece))
         {
             Piece[7] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[7] == 'X' && FindIsSpaceOccupied(1 ,Piece))
         {
             Piece[1] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[3] == 'X' && FindIsSpaceOccupied(5, Piece))
         {
             Piece[5] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[5] == 'X' && FindIsSpaceOccupied(3, Piece))
         {
             Piece[3] = 'O';
-            IsPlayed = true;
         }  
-    }
-
-    if (!IsPlayed && Piece[5] == 'X')
+    } 
+    else if (Piece[5] == 'X')
     {
         if (Piece[2] == 'X' && FindIsSpaceOccupied(8 , Piece))
         {
             Piece[8] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[8] == 'X' && FindIsSpaceOccupied(2, Piece))
         {
             Piece[2] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(3 ,Piece))
         {
             Piece[3] = 'O';
-            IsPlayed = true;
         }
     }
-
-    if (!IsPlayed && Piece[6] == 'X')
+    else if (Piece[6] == 'X')
     {
         if (Piece[3] == 'X' && FindIsSpaceOccupied(0 ,Piece))
         {
-            Piece[0] = 'O';
-            IsPlayed = true;   
+            Piece[0] = 'O';   
         }
         else if (Piece[7] == 'X' && FindIsSpaceOccupied(8 ,Piece))
         {
             Piece[8] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(2 ,Piece))
         {
             Piece[2] = 'O';
-            IsPlayed = true;
         }
             
     }
-
-    if (!IsPlayed && Piece[7] == 'X')
+    else if (Piece[7] == 'X')
     {
         if (Piece[6] == 'X' && FindIsSpaceOccupied(8 ,Piece))
         {
             Piece[8] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(1 ,Piece))
         {
             Piece[1] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[8] == 'X' && FindIsSpaceOccupied(6, Piece))
         {
             Piece[6] = 'O';
-            IsPlayed = true;
         }
         
     }
-
-    if (!IsPlayed && Piece[8] == 'X')
+    else if (Piece[8] == 'X')
     {
         if (Piece[5] == 'X' && FindIsSpaceOccupied(2 ,Piece))
         {
             Piece[2] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[7] == 'X' && FindIsSpaceOccupied(6 ,Piece))
         {
             Piece[6] = 'O';
-            IsPlayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(0 ,Piece))
         {
             Piece[0] = 'O';
-            IsPlayed = true;
-        }  
+        }
     }
-    
-    
 }
 
-void PlayerMove (RenderWindow& window, Event event, char Piece[]) // player uses X
+void PlayerMove (RenderWindow& window, Event event, char Piece[]) // player uses X;
 {
     short Value = 0;
     while (Value == 0)
     {
-        if (event.type == Event::KeyPressed)
-        {
-            switch (event.key.code)
-            {
-                case  Keyboard::Num1:
-                    Value = 1;
-                    break;
-                case  Keyboard::Num2:
-                    Value = 2;
-                    break;
-                case Keyboard::Num3:
-                    Value = 3;
-                    break;
-                case Keyboard::Num4:
-                    Value = 4;
-                    break;
-                case Keyboard::Num5:
-                    Value = 5;
-                    break;
-                case Keyboard::Num6:
-                    Value = 6;
-                    break;
-                case Keyboard::Num7:
-                    Value = 7;
-                    break;
-                case Keyboard::Num8:
-                    Value = 8;
-                    break;
-                case Keyboard::Num9:
-                    Value = 9;
-                    break;
-
-            }
-        }
-
+        Value = inputHandler(event);
         if (Piece[Value - 1] != 'X' && Piece[Value -1] != 'O')
         {
             Piece[Value -1] = 'X';
@@ -273,11 +219,6 @@ void PlayerMove (RenderWindow& window, Event event, char Piece[]) // player uses
     }
 }
 
-void workerThread() {
-    while (running) {
-        std::this_thread::sleep_for(milliseconds(100));
-    }
-}
 
 void DrawText (RenderWindow& window, Vector2f pos, char Piece, const Font& font) 
 {
@@ -364,7 +305,6 @@ int main()
         Vector2f(Pos[2].x, Pos[6].y)                                   // 8
         };
     short LenthPos = std::size(Pos);
-    thread worker(workerThread);
     Event event;
     Font font;
     if (!font.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) cout<<"Failed to load font from /usr/share/fonts/gnu-free/FreeSans.ttf"<<endl;
@@ -389,6 +329,4 @@ int main()
     }
 
     running = false;
-    worker.join();
-    return 0;
 }
