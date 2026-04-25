@@ -131,17 +131,17 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
         }
         else if (Piece[3] == 'X' && FindIsSpaceOccupied(5, Piece))
         {
-            Piece[5] = 'X';
+            Piece[5] = 'O';
             IsPlayed = true;
         }
         else if (Piece[5] == 'X' && FindIsSpaceOccupied(3, Piece))
         {
-            Piece[3] = 'X';
+            Piece[3] = 'O';
             IsPlayed = true;
         }  
     }
 
-    if (!IsPlayed && Piece[5])
+    if (!IsPlayed && Piece[5] == 'X')
     {
         if (Piece[2] == 'X' && FindIsSpaceOccupied(8 , Piece))
         {
@@ -155,7 +155,7 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(3 ,Piece))
         {
-            Piece[3] = 'X';
+            Piece[3] = 'O';
             IsPlayed = true;
         }
     }
@@ -194,7 +194,7 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
         }
         else if (Piece[8] == 'X' && FindIsSpaceOccupied(6, Piece))
         {
-            Piece[8] = 'O';
+            Piece[6] = 'O';
             IsPlayed = true;
         }
         
