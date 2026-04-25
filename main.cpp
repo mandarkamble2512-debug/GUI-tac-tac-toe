@@ -139,6 +139,25 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
             Piece[3] = 'X';
             IsPlayed = true;
         }
+
+        if (!IsPlayed && Piece[5])
+        {
+            if (Piece[2] == 'X' && FindIsSpaceOccupied(8 , Piece))
+            {
+                Piece[8] = 'O';
+                IsPlayed = true;
+            }
+            else if (Piece[8] == 'X' && FindIsSpaceOccupied(2, Piece))
+            {
+                Piece[2] = 'O';
+                IsPlayed = true;
+            }
+            else if (Piece[4] == 'X' && FindIsSpaceOccupied(3 ,Piece))
+            {
+                Piece[3] = 'X';
+            }
+        }
+        
     }
 }
 
