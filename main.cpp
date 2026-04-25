@@ -27,10 +27,6 @@ using sf::Keyboard;
 
 atomic<bool> running(true);
 
-void GameLoop ()
-{
-    
-}
 
 void DrawText (RenderWindow& window, Vector2f pos, char Piece, const Font& font) 
 {
@@ -99,12 +95,32 @@ void Drawbord(RenderWindow& window)
     window.draw(bord3);
 }
 
+void GameLoop (RenderWindow& window,char piece[],const Vector2f Pos[],Font font)
+{
+    for (short i = 0; i <= 8; i++)
+    {
+        if (piece[i] == 'X')
+        {
+           DrawX(window, Pos[i]); 
+        }
+        else if (piece[i] == 'O')
+        {
+            DrawO(window, Pos[i]);
+        }
+        else
+        {
+            DrawText(window, Pos[i], piece[i], font);
+        }
+        Drawbord(window);
+    }
+}
+
 int main() 
 {
     RenderWindow window(VideoMode(800, 800), "TIC");
     Vector2u size = window.getSize();
     char Piece[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-    const Vector2f Pos[9] = // for defining the cordinates for the X or O
+    const Vector2f Pos[] = // for defining the cordinates for the X or O
         {
         Vector2f(130 , 130),                                           // 0
         Vector2f((Pos[0].x + (size.x * 1.0f/3.0f)), Pos[0].y),     // 1
@@ -131,11 +147,7 @@ int main()
             }
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
-        for (short i = 0; i <= 8; i++)
-        {
-            DrawText(window, Pos[i], Piece[i], font);
-        }
-        
+        GameLoop(window ,Piece, Pos, font);
         Drawbord(window);
         window.display();
     }
