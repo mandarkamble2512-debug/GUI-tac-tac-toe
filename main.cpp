@@ -138,27 +138,88 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
         {
             Piece[3] = 'X';
             IsPlayed = true;
-        }
+        }  
+    }
 
-        if (!IsPlayed && Piece[5])
+    if (!IsPlayed && Piece[5])
+    {
+        if (Piece[2] == 'X' && FindIsSpaceOccupied(8 , Piece))
         {
-            if (Piece[2] == 'X' && FindIsSpaceOccupied(8 , Piece))
-            {
-                Piece[8] = 'O';
-                IsPlayed = true;
-            }
-            else if (Piece[8] == 'X' && FindIsSpaceOccupied(2, Piece))
-            {
-                Piece[2] = 'O';
-                IsPlayed = true;
-            }
-            else if (Piece[4] == 'X' && FindIsSpaceOccupied(3 ,Piece))
-            {
-                Piece[3] = 'X';
-            }
+            Piece[8] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[8] == 'X' && FindIsSpaceOccupied(2, Piece))
+        {
+            Piece[2] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[4] == 'X' && FindIsSpaceOccupied(3 ,Piece))
+        {
+            Piece[3] = 'X';
+            IsPlayed = true;
+        }
+    }
+
+    if (!IsPlayed && Piece[6] == 'X')
+    {
+        if (Piece[3] == 'X' && FindIsSpaceOccupied(0 ,Piece))
+        {
+            Piece[0] = 'O';
+            IsPlayed = true;   
+        }
+        else if (Piece[7] == 'X' && FindIsSpaceOccupied(8 ,Piece))
+        {
+            Piece[8] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[4] == 'X' && FindIsSpaceOccupied(2 ,Piece))
+        {
+            Piece[2] = 'O';
+            IsPlayed = true;
+        }
+            
+    }
+
+    if (!IsPlayed && Piece[7] == 'X')
+    {
+        if (Piece[6] == 'X' && FindIsSpaceOccupied(8 ,Piece))
+        {
+            Piece[8] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[4] == 'X' && FindIsSpaceOccupied(1 ,Piece))
+        {
+            Piece[1] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[8] == 'X' && FindIsSpaceOccupied(6, Piece))
+        {
+            Piece[8] = 'O';
+            IsPlayed = true;
         }
         
     }
+
+    if (!IsPlayed && Piece[8] == 'X')
+    {
+        if (Piece[5] == 'X' && FindIsSpaceOccupied(2 ,Piece))
+        {
+            Piece[2] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[7] == 'X' && FindIsSpaceOccupied(6 ,Piece))
+        {
+            Piece[6] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[4] == 'X' && FindIsSpaceOccupied(0 ,Piece))
+        {
+            Piece[0] = 'O';
+            IsPlayed = true;
+        }  
+    }
+    
+    
 }
 
 void PlayerMove (RenderWindow& window, Event event, char Piece[]) // player uses X
