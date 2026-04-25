@@ -36,7 +36,6 @@ bool FindIsSpaceOccupied (short index, char Piece[])
     {
         return false;
     }
-    
 }
 
 void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer uses O
@@ -89,15 +88,58 @@ void ComputerMove(RenderWindow& window, Event event, char Piece[]) // computer u
         }
         else if (Piece[5] == 'X' && FindIsSpaceOccupied(8, Piece))
         {
-            Piece[8] = 'X'; 
+            Piece[8] = 'O';
+            IsPlayed = true;
         }
-        else if (Piece[4] == 'X' && FindIsSpaceOccupied(5, Piece))
+        else if (Piece[4] == 'X' && FindIsSpaceOccupied(6, Piece))
         {
-            Piece[5] = 'X';
+            Piece[6] = 'O';
+            IsPlayed = true;
         }
-        
+    }
+
+    if (!IsPlayed && Piece[3] == 'X')
+    {
+        if (Piece[0] == 'X' && FindIsSpaceOccupied(6 ,Piece))
+        {
+            Piece[6] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[4] == 'X' && FindIsSpaceOccupied(5 ,Piece))
+        {
+            Piece[5] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[6] == 'X' && FindIsSpaceOccupied(0 , Piece))
+        {
+            Piece[0] = 'O';
+            IsPlayed = true;
+        }
     }
     
+    if (!IsPlayed && Piece[4] == 'X')
+    {
+        if (Piece[1] == 'X' && FindIsSpaceOccupied(7, Piece))
+        {
+            Piece[7] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[7] == 'X' && FindIsSpaceOccupied(1 ,Piece))
+        {
+            Piece[1] = 'O';
+            IsPlayed = true;
+        }
+        else if (Piece[3] == 'X' && FindIsSpaceOccupied(5, Piece))
+        {
+            Piece[5] = 'X';
+            IsPlayed = true;
+        }
+        else if (Piece[5] == 'X' && FindIsSpaceOccupied(3, Piece))
+        {
+            Piece[3] = 'X';
+            IsPlayed = true;
+        }
+    }
 }
 
 void PlayerMove (RenderWindow& window, Event event, char Piece[]) // player uses X
