@@ -148,7 +148,6 @@ int main()
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
         GameLoop(window ,Piece, Pos, font);
-        Drawbord(window);
         window.display();
     }
 
