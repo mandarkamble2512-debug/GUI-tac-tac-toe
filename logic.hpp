@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <ctime>
 
 using std::string;
 using sf::RenderWindow;
@@ -165,6 +166,10 @@ bool FindIsSpaceOccupied (short index, char Piece[])
 void ComputerMove(char Piece[]) // computer uses O
 {
     bool IsPlayed = false;
+    bool Hasplayed = false;
+    srand(time(NULL));
+    short randomMove = rand() % 9;
+    short num;
     if (Piece[0] == 'X')
     {
         if (Piece[1] == 'X' && FindIsSpaceOccupied(2, Piece))
@@ -304,6 +309,18 @@ void ComputerMove(char Piece[]) // computer uses O
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(0 ,Piece))
         {
             Piece[0] = 'O';
+        }
+    }
+    else 
+    {
+        num = randomMove;
+        while (!Hasplayed)
+        {
+            if (FindIsSpaceOccupied(num ,Piece))
+            {
+                Piece[num] = 'O';
+                Hasplayed = true;
+            }
         }
     }
 }

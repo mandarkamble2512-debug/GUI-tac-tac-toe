@@ -95,8 +95,9 @@ void Drawbord(RenderWindow& window)
     window.draw(bord3);
 }
 
-void GameLoop (RenderWindow& window,char piece[],const Vector2f Pos[],Font font)
+void GameLoop (RenderWindow& window, char piece[], const Vector2f Pos[], Font font, Event event)
 {
+    string WinnerCheack;
     for (short i = 0; i <= 8; i++)
     {
         if (piece[i] == 'X')
@@ -147,7 +148,8 @@ int main()
             }
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
-        GameLoop(window ,Piece, Pos, font);
+        GameLoop(window ,Piece, Pos, font, event);
+        // Drawbord(window);
         window.display();
     }
 
