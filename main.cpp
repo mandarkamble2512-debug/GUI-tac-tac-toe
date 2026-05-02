@@ -95,29 +95,10 @@ void Drawbord(RenderWindow& window)
     window.draw(bord3);
 }
 
-void GameLoop (RenderWindow& window, char piece[], const Vector2f Pos[], Font font, Event event)
-{
-    string WinnerCheack;
-    for (short i = 0; i <= 8; i++)
-    {
-        if (piece[i] == 'X')
-        {
-           DrawX(window, Pos[i]); 
-        }
-        else if (piece[i] == 'O')
-        {
-            DrawO(window, Pos[i]);
-        }
-        else
-        {
-            DrawText(window, Pos[i], piece[i], font);
-        }
-        Drawbord(window);
-    }
-}
 
 int main() 
 {
+    srand(time(NULL));
     RenderWindow window(VideoMode(800, 800), "TIC");
     Vector2u size = window.getSize();
     char Piece[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -136,6 +117,7 @@ int main()
     short LenthPos = std::size(Pos);
     Event event;
     Font font;
+    bool HasPlayerMoved = false;
     if (!font.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) cout<<"Failed to load font from /usr/share/fonts/gnu-free/FreeSans.ttf"<<endl;
 
     while (running && window.isOpen()) 
@@ -148,8 +130,37 @@ int main()
             }
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
-        GameLoop(window ,Piece, Pos, font, event);
-        // Drawbord(window);
+        
+        /*
+            Game Loop
+        */
+
+        for (short i = 0; i <= 8 ; i++)
+        {
+            switch (Piece[i])
+            {
+            case 'X':
+                DrawX(window, Pos[i]);
+                break;
+            
+            case 'O':
+                DrawO(window, Pos[i]);
+                break;
+
+            default:
+                DrawText(window, Pos[i], Piece[i], font);
+                break;
+            }
+        }
+
+        while (!HasPlayerMoved)
+        {
+            HasPlayerMoved = PlayerMove(window, event, Piece);
+        }
+        
+        Drawbord(window);
+
+        ComputerMove(Piece);
         window.display();
     }
 
