@@ -186,7 +186,8 @@ void ComputerMove(char Piece[]) // computer uses O
             Hasplayed = true;
         }
     }
-    else if (Piece[1] == 'X' && !Hasplayed)
+    
+    if (Piece[1] == 'X' && !Hasplayed)
         {
             if (Piece[0] == 'X' && FindIsSpaceOccupied(2, Piece))
             {
@@ -204,7 +205,8 @@ void ComputerMove(char Piece[]) // computer uses O
                 Hasplayed = true;
             }        
         }
-    else if (Piece[2] == 'X' && !Hasplayed)
+    
+    if (Piece[2] == 'X' && !Hasplayed)
     {
         if (Piece[1] == 'X' && FindIsSpaceOccupied(0, Piece))
         {
@@ -222,7 +224,8 @@ void ComputerMove(char Piece[]) // computer uses O
             Hasplayed = true;
         }
     }
-    else if (Piece[3] == 'X' && !Hasplayed)
+    
+    if (Piece[3] == 'X' && !Hasplayed)
     {
         if (Piece[0] == 'X' && FindIsSpaceOccupied(6 ,Piece))
         {
@@ -237,92 +240,113 @@ void ComputerMove(char Piece[]) // computer uses O
         else if (Piece[6] == 'X' && FindIsSpaceOccupied(0 , Piece))
         {
             Piece[0] = 'O';
+            Hasplayed = true;
         }
     }
-    else  if (Piece[4] == 'X')
+    
+    if (Piece[4] == 'X' && !Hasplayed)
     {
         if (Piece[1] == 'X' && FindIsSpaceOccupied(7, Piece))
         {
             Piece[7] = 'O';
+            Hasplayed = true;
         }
         else if (Piece[7] == 'X' && FindIsSpaceOccupied(1 ,Piece))
         {
             Piece[1] = 'O';
+            Hasplayed = true;
         }
         else if (Piece[3] == 'X' && FindIsSpaceOccupied(5, Piece))
         {
             Piece[5] = 'O';
+            Hasplayed = true;
         }
         else if (Piece[5] == 'X' && FindIsSpaceOccupied(3, Piece))
         {
             Piece[3] = 'O';
+            Hasplayed = true;
         }  
     } 
-    else if (Piece[5] == 'X')
+    
+    if (Piece[5] == 'X' && !Hasplayed)
     {
         if (Piece[2] == 'X' && FindIsSpaceOccupied(8 , Piece))
         {
             Piece[8] = 'O';
+            Hasplayed = true;
         }
         else if (Piece[8] == 'X' && FindIsSpaceOccupied(2, Piece))
         {
             Piece[2] = 'O';
+            Hasplayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(3 ,Piece))
         {
             Piece[3] = 'O';
+            Hasplayed = true;
         }
     }
-    else if (Piece[6] == 'X')
+    
+    if (Piece[6] == 'X' && !Hasplayed)
     {
         if (Piece[3] == 'X' && FindIsSpaceOccupied(0 ,Piece))
         {
             Piece[0] = 'O';   
+            Hasplayed = true;
         }
         else if (Piece[7] == 'X' && FindIsSpaceOccupied(8 ,Piece))
         {
             Piece[8] = 'O';
+            Hasplayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(2 ,Piece))
         {
             Piece[2] = 'O';
+            Hasplayed = true;
         }
-            
     }
-    else if (Piece[7] == 'X')
+    
+    if (Piece[7] == 'X' && !Hasplayed)
     {
         if (Piece[6] == 'X' && FindIsSpaceOccupied(8 ,Piece))
         {
             Piece[8] = 'O';
+            Hasplayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(1 ,Piece))
         {
             Piece[1] = 'O';
+            Hasplayed = true;
         }
         else if (Piece[8] == 'X' && FindIsSpaceOccupied(6, Piece))
         {
             Piece[6] = 'O';
+            Hasplayed = true;
         }
         
     }
-    else if (Piece[8] == 'X')
+    
+    if (Piece[8] == 'X' && !Hasplayed)
     {
         if (Piece[5] == 'X' && FindIsSpaceOccupied(2 ,Piece))
         {
             Piece[2] = 'O';
+            Hasplayed = true;
         }
         else if (Piece[7] == 'X' && FindIsSpaceOccupied(6 ,Piece))
         {
             Piece[6] = 'O';
+            Hasplayed = true;
         }
         else if (Piece[4] == 'X' && FindIsSpaceOccupied(0 ,Piece))
         {
             Piece[0] = 'O';
+            Hasplayed = true;
         }
     }
-    else 
+    
+    if(!Hasplayed) 
     {
-        
         
         while (!Hasplayed)
         {
