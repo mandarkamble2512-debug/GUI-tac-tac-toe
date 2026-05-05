@@ -101,6 +101,10 @@ int main()
     srand(time(NULL));
     RenderWindow window(VideoMode(800, 800), "TIC");
     Vector2u size = window.getSize();
+    Event event;
+    Font font;
+    string status = "?";
+    bool HasPlayerMoved = false;
     char Piece[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     const Vector2f Pos[] = // for defining the cordinates for the X or O
         {
@@ -115,9 +119,6 @@ int main()
         Vector2f(Pos[2].x, Pos[6].y)                                   // 8
         };
     short LenthPos = std::size(Pos);
-    Event event;
-    Font font;
-    bool HasPlayerMoved = false;
     if (!font.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) cout<<"Failed to load font from /usr/share/fonts/gnu-free/FreeSans.ttf"<<endl;
 
     while (running && window.isOpen()) 
@@ -128,6 +129,17 @@ int main()
             {
                 running = false;
             }
+
+        while (!HasPlayerMoved && status == "?" )
+        {
+            if (event.type == Event::KeyPressed)
+            {
+                if (PlayerMove(window, event, Piece))
+                {
+                    HasPlayerMoved = true;
+                }
+            }
+        }
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
         
@@ -152,15 +164,10 @@ int main()
                 break;
             }
         }
-
-        while (!HasPlayerMoved)
-        {
-            HasPlayerMoved = PlayerMove(window, event, Piece);
-        }
-        
         Drawbord(window);
 
-        ComputerMove(Piece);
+
+        // ComputerMove(Piece);
         window.display();
     }
 

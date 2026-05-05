@@ -1,8 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <ctime>
+#include <future>
 
 using std::string;
+using std::ref;
+using std::future;
+using std::async;
 using sf::RenderWindow;
 using sf::Event;
 using sf::Keyboard;
@@ -135,8 +139,9 @@ short inputHandler(Event event)
 
 bool PlayerMove (RenderWindow& window, Event event, char Piece[]) // player uses X;
 {
-    short Value = inputHandler(event);
-
+    // short Value = inputHandler(event);
+    future<short> ValueFuture = async(inputHandler, event);
+    short Value = ValueFuture.get();
     if (Value >= 1 && Value <= 9)
     {
         if (Piece[Value - 1] != 'X' && Piece[Value -1] != 'O')

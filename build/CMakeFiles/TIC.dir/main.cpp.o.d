@@ -231,4 +231,14 @@ CMakeFiles/TIC.dir/main.cpp.o: \
  /usr/include/c++/15/bits/atomic_base.h \
  /usr/include/c++/15/bits/atomic_lockfree_defines.h \
  /usr/include/c++/15/chrono \
- /home/mandar/Documents/full\ projects/c++/GUI\ tac\ tac\ toe/logic.hpp
+ /home/mandar/Documents/full\ projects/c++/GUI\ tac\ tac\ toe/logic.hpp \
+ /usr/include/c++/15/future /usr/include/c++/15/mutex \
+ /usr/include/c++/15/bits/std_mutex.h \
+ /usr/include/c++/15/bits/unique_lock.h \
+ /usr/include/c++/15/condition_variable \
+ /usr/include/c++/15/bits/shared_ptr.h \
+ /usr/include/c++/15/bits/shared_ptr_base.h \
+ /usr/include/c++/15/bits/allocated_ptr.h \
+ /usr/include/c++/15/ext/concurrence.h \
+ /usr/include/c++/15/bits/atomic_futex.h \
+ /usr/include/c++/15/bits/std_function.h
