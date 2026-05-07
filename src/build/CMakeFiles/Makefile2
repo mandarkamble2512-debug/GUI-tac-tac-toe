@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/mandar/Documents/full projects/c++/GUI tac tac toe"
+CMAKE_SOURCE_DIR = "/home/mandar/Documents/full projects/c++/GUI tac tac toe/src"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/mandar/Documents/full projects/c++/GUI tac tac toe/build"
+CMAKE_BINARY_DIR = "/home/mandar/Documents/full projects/c++/GUI tac tac toe/src/build"
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -85,14 +85,14 @@ clean: CMakeFiles/TIC.dir/clean
 CMakeFiles/TIC.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" --progress-num=1,2 "Built target TIC"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/home/mandar/Documents/full projects/c++/GUI tac tac toe/src/build/CMakeFiles" --progress-num=1,2 "Built target TIC"
 .PHONY : CMakeFiles/TIC.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TIC.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/mandar/Documents/full projects/c++/GUI tac tac toe/src/build/CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/TIC.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/mandar/Documents/full projects/c++/GUI tac tac toe/src/build/CMakeFiles" 0
 .PHONY : CMakeFiles/TIC.dir/rule
 
 # Convenience name for target.
@@ -102,7 +102,7 @@ TIC: CMakeFiles/TIC.dir/rule
 # codegen rule for target.
 CMakeFiles/TIC.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TIC.dir/build.make CMakeFiles/TIC.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/home/mandar/Documents/full projects/c++/GUI tac tac toe/build/CMakeFiles" --progress-num=1,2 "Finished codegen for target TIC"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/home/mandar/Documents/full projects/c++/GUI tac tac toe/src/build/CMakeFiles" --progress-num=1,2 "Finished codegen for target TIC"
 .PHONY : CMakeFiles/TIC.dir/codegen
 
 # clean rule for target.

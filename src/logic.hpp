@@ -2,8 +2,10 @@
 #include <string>
 #include <ctime>
 #include <future>
+#include <vector>
 
 using std::string;
+using std::vector;
 using std::ref;
 using std::future;
 using std::async;
@@ -140,7 +142,7 @@ short inputHandler(RenderWindow& window,Event evente)
     return 0;
 }
 
-bool PlayerMove(sf::Event& event, char Piece[]) 
+bool PlayerMove(sf::Event& event, vector<char> Piece) 
 {
     if (event.type == sf::Event::KeyPressed) 
     {
@@ -150,7 +152,8 @@ bool PlayerMove(sf::Event& event, char Piece[])
         else if (event.key.code >= sf::Keyboard::Numpad1 && event.key.code <= sf::Keyboard::Numpad9)
             index = event.key.code - sf::Keyboard::Numpad1;
 
-        if (index != -1 && Piece[index] != 'X' && Piece[index] != 'O') {
+        if (index != -1 && Piece[index] != 'X' && Piece[index] != 'O') 
+        {
             Piece[index] = 'X';
             return true;
         }
@@ -159,214 +162,19 @@ bool PlayerMove(sf::Event& event, char Piece[])
 }
 
 
-bool FindIsSpaceOccupied (short index, char Piece[])
-{
-    if (Piece[index] != 'X' && Piece[index] != 'O')
-    {
-        return true;
-    }
-    else 
-    {
-        return false;
-    }
-}
+// bool FindIsSpaceOccupied (short index, vector<char> Piece[])
+// {
+//     if (Piece[index] != 'X' && Piece[index] != 'O')
+//     {
+//         return true;
+//     }
+//     else 
+//     {
+//         return false;
+//     }
+// }
 
-void ComputerMove(char Piece[]) // computer uses O
+void ComputerMove(vector<char> Piece[]) // computer uses O
 {
-    bool IsPlayed = false;
-    bool Hasplayed = false;
-    short randomMove;
-    short num;
-    if (Piece[0] == 'X' && !Hasplayed)
-    {
-        if (Piece[1] == 'X' && FindIsSpaceOccupied(2, Piece))
-        {
-            Piece[2] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[3] == 'X' && FindIsSpaceOccupied(6, Piece))
-        {
-            Piece[6] = 'O';
-            Hasplayed = true;
-
-        }
-        else if (Piece[4] == 'X' && FindIsSpaceOccupied(8, Piece))
-        {
-            Piece[8] = 'O';
-            Hasplayed = true;
-        }
-    }
     
-    if (Piece[1] == 'X' && !Hasplayed)
-        {
-            if (Piece[0] == 'X' && FindIsSpaceOccupied(2, Piece))
-            {
-                Piece[2] = 'O';
-                Hasplayed = true;
-            }
-            else if (Piece[2] == 'X' && FindIsSpaceOccupied(0, Piece))
-            {
-                Piece[0] = 'O';
-                Hasplayed = true;
-            }
-            else if (Piece[4] == 'X' && FindIsSpaceOccupied(7, Piece))
-            {
-                Piece[7] = 'O';
-                Hasplayed = true;
-            }        
-        }
-    
-    if (Piece[2] == 'X' && !Hasplayed)
-    {
-        if (Piece[1] == 'X' && FindIsSpaceOccupied(0, Piece))
-        {
-            Piece[0] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[5] == 'X' && FindIsSpaceOccupied(8, Piece))
-        {
-            Piece[8] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[4] == 'X' && FindIsSpaceOccupied(6, Piece))
-        {
-            Piece[6] = 'O';
-            Hasplayed = true;
-        }
-    }
-    
-    if (Piece[3] == 'X' && !Hasplayed)
-    {
-        if (Piece[0] == 'X' && FindIsSpaceOccupied(6 ,Piece))
-        {
-            Piece[6] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[4] == 'X' && FindIsSpaceOccupied(5 ,Piece))
-        {
-            Piece[5] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[6] == 'X' && FindIsSpaceOccupied(0 , Piece))
-        {
-            Piece[0] = 'O';
-            Hasplayed = true;
-        }
-    }
-    
-    if (Piece[4] == 'X' && !Hasplayed)
-    {
-        if (Piece[1] == 'X' && FindIsSpaceOccupied(7, Piece))
-        {
-            Piece[7] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[7] == 'X' && FindIsSpaceOccupied(1 ,Piece))
-        {
-            Piece[1] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[3] == 'X' && FindIsSpaceOccupied(5, Piece))
-        {
-            Piece[5] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[5] == 'X' && FindIsSpaceOccupied(3, Piece))
-        {
-            Piece[3] = 'O';
-            Hasplayed = true;
-        }  
-    } 
-    
-    if (Piece[5] == 'X' && !Hasplayed)
-    {
-        if (Piece[2] == 'X' && FindIsSpaceOccupied(8 , Piece))
-        {
-            Piece[8] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[8] == 'X' && FindIsSpaceOccupied(2, Piece))
-        {
-            Piece[2] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[4] == 'X' && FindIsSpaceOccupied(3 ,Piece))
-        {
-            Piece[3] = 'O';
-            Hasplayed = true;
-        }
-    }
-    
-    if (Piece[6] == 'X' && !Hasplayed)
-    {
-        if (Piece[3] == 'X' && FindIsSpaceOccupied(0 ,Piece))
-        {
-            Piece[0] = 'O';   
-            Hasplayed = true;
-        }
-        else if (Piece[7] == 'X' && FindIsSpaceOccupied(8 ,Piece))
-        {
-            Piece[8] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[4] == 'X' && FindIsSpaceOccupied(2 ,Piece))
-        {
-            Piece[2] = 'O';
-            Hasplayed = true;
-        }
-    }
-    
-    if (Piece[7] == 'X' && !Hasplayed)
-    {
-        if (Piece[6] == 'X' && FindIsSpaceOccupied(8 ,Piece))
-        {
-            Piece[8] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[4] == 'X' && FindIsSpaceOccupied(1 ,Piece))
-        {
-            Piece[1] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[8] == 'X' && FindIsSpaceOccupied(6, Piece))
-        {
-            Piece[6] = 'O';
-            Hasplayed = true;
-        }
-        
-    }
-    
-    if (Piece[8] == 'X' && !Hasplayed)
-    {
-        if (Piece[5] == 'X' && FindIsSpaceOccupied(2 ,Piece))
-        {
-            Piece[2] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[7] == 'X' && FindIsSpaceOccupied(6 ,Piece))
-        {
-            Piece[6] = 'O';
-            Hasplayed = true;
-        }
-        else if (Piece[4] == 'X' && FindIsSpaceOccupied(0 ,Piece))
-        {
-            Piece[0] = 'O';
-            Hasplayed = true;
-        }
-    }
-    
-    if(!Hasplayed) 
-    {
-        
-        while (!Hasplayed)
-        {
-            randomMove = rand() % 9;
-            num = randomMove;
-            if (FindIsSpaceOccupied(randomMove ,Piece))
-            {
-                Piece[randomMove] = 'O';
-                Hasplayed = true;
-            }
-        }
-    }
 }

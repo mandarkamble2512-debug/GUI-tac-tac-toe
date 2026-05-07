@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/mandar/Documents/full projects/c++/GUI tac tac toe/main.cpp" "CMakeFiles/TIC.dir/main.cpp.o" "gcc" "CMakeFiles/TIC.dir/main.cpp.o.d"
+  "/home/mandar/Documents/full projects/c++/GUI tac tac toe/src/main.cpp" "CMakeFiles/TIC.dir/main.cpp.o" "gcc" "CMakeFiles/TIC.dir/main.cpp.o.d"
   "" "TIC" "gcc" "CMakeFiles/TIC.dir/link.d"
   )
 

@@ -1,23 +1,23 @@
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
-#include <SFML/Graphics.hpp>
-#include <thread>
 #include <atomic>
 #include <chrono>
+#include <vector>
 #include "logic.hpp"
 
 using std::ref;
-using std::cout;
 using std::endl;
+using std::cout;
 using std::atomic;
 using std::string;
+using std::vector;
 using sf::RenderWindow;
 using sf::VideoMode;
 using sf::Event;
 using sf::Color;
 using sf::RectangleShape;
 using sf::Vector2f;
-using std::thread;
 using std::chrono::milliseconds;  
 using sf::Vector2u;
 using sf::CircleShape;
@@ -105,7 +105,7 @@ int main()
     Font font;
     string status = "?";
     bool HasPlayerMoved = false;
-    char Piece[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    vector<char> Piece = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     const Vector2f Pos[] = // for defining the cordinates for the X or O
         {
         Vector2f(130 , 130),                                           // 0
