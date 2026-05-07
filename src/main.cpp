@@ -129,17 +129,6 @@ int main()
             {
                 running = false;
             }
-
-        while (!HasPlayerMoved && status == "?" )
-        {
-            if (event.type == Event::KeyPressed)
-            {
-                if (PlayerMove(window, event, Piece))
-                {
-                    HasPlayerMoved = true;
-                }
-            }
-        }
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
         
@@ -165,7 +154,17 @@ int main()
             }
         }
         Drawbord(window);
-
+        
+        while (!HasPlayerMoved && status == "?" && window.pollEvent(event))
+        {
+            if (event.type == Event::KeyPressed)
+            {
+                if (PlayerMove(event, Piece))
+                {
+                    HasPlayerMoved = true;
+                }
+            }
+        }
 
         // ComputerMove(Piece);
         window.display();

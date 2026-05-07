@@ -120,39 +120,44 @@ string WinnerCheacker (char Piece[])
     }
 }
 
-short inputHandler(Event event)
+short inputHandler(RenderWindow& window,Event evente)
 {
-    if (event.type == Event::KeyPressed)
+    while (window.pollEvent(evente))
     {
-        if (event.key.code >= Keyboard::Num1 && event.key.code <= Keyboard::Num9)
-        {
-            return (event.key.code - Keyboard::Num1) + 1;
-        }
-        
-        if (event.key.code >= Keyboard::Numpad1 && event.key.code <= Keyboard::Numpad9)
-        {
-            return (event.key.code - Keyboard::Numpad1) + 1;
-        }
+        if (evente.type == Event::KeyPressed)
+            {
+                if (evente.key.code >= Keyboard::Num1 && evente.key.code <= Keyboard::Num9)
+                {
+                    return (evente.key.code - Keyboard::Num1) + 1;
+                }
+                
+                if (evente.key.code >= Keyboard::Numpad1 && evente.key.code <= Keyboard::Numpad9)
+                {
+                    return (evente.key.code - Keyboard::Numpad1) + 1;
+                }
+            }
     }
     return 0;
 }
 
-bool PlayerMove (RenderWindow& window, Event event, char Piece[]) // player uses X;
+bool PlayerMove(sf::Event& event, char Piece[]) 
 {
-    // short Value = inputHandler(event);
-    future<short> ValueFuture = async(inputHandler, event);
-    short Value = ValueFuture.get();
-    if (Value >= 1 && Value <= 9)
+    if (event.type == sf::Event::KeyPressed) 
     {
-        if (Piece[Value - 1] != 'X' && Piece[Value -1] != 'O')
-        {
-            Piece[Value -1] = 'X';
+        int index = -1;
+        if (event.key.code >= sf::Keyboard::Num1 && event.key.code <= sf::Keyboard::Num9)
+            index = event.key.code - sf::Keyboard::Num1;
+        else if (event.key.code >= sf::Keyboard::Numpad1 && event.key.code <= sf::Keyboard::Numpad9)
+            index = event.key.code - sf::Keyboard::Numpad1;
+
+        if (index != -1 && Piece[index] != 'X' && Piece[index] != 'O') {
+            Piece[index] = 'X';
             return true;
         }
     }
-
     return false;
 }
+
 
 bool FindIsSpaceOccupied (short index, char Piece[])
 {
