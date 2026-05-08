@@ -14,7 +14,7 @@ A gui tac toe made with SFML
 
 1) open your terminal (or Powershell if on windows) make sure you are in the directory named build on the root 
 2) Now run the command ```cmake ..``` this shall look something like this
-![terminal-screenshot](./Screen%20shot/terminal.png)
+![terminal-screenshot](./src/Screen%20shot/terminal.png)
 3) Now run the command ```cmake --build .``` make sure to add that Dot at the last
 
 ##how to get things ready for windows
