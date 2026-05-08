@@ -162,6 +162,12 @@ int main()
                 if (PlayerMove(event, Piece))
                 {
                     HasPlayerMoved = true;
+                    cout<<"player moved"<<'\n';
+                    for (short i = 0; i < 8; i++)
+                    {
+                        cout<<Piece.at(i)<<" "<<i<<'\n'; 
+                    }
+                    
                 }
             }
         }

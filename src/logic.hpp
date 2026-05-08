@@ -142,7 +142,7 @@ short inputHandler(RenderWindow& window,Event evente)
     return 0;
 }
 
-bool PlayerMove(sf::Event& event, vector<char> Piece) 
+bool PlayerMove(sf::Event& event, vector<char>& Piece) 
 {
     if (event.type == sf::Event::KeyPressed) 
     {
@@ -154,8 +154,8 @@ bool PlayerMove(sf::Event& event, vector<char> Piece)
 
         if (index != -1 && Piece[index] != 'X' && Piece[index] != 'O') 
         {
-            Piece[index] = 'X';
-            return true;
+            Piece.at(index) = 'X';
+                return true;
         }
     }
     return false;
