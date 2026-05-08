@@ -13,7 +13,7 @@ using sf::RenderWindow;
 using sf::Event;
 using sf::Keyboard;
 
-string WinnerCheacker (char Piece[])
+string WinnerCheacker (vector<char>& Piece)
 {
     bool IsBordFull = false; 
     bool hasNumbers = false;
@@ -162,7 +162,7 @@ bool PlayerMove(sf::Event& event, vector<char>& Piece)
 }
 
 
-// bool FindIsSpaceOccupied (short index, vector<char> Piece[])
+// bool FindIsSpaceOccupied (short index, vector<char>& Piece[])
 // {
 //     if (Piece[index] != 'X' && Piece[index] != 'O')
 //     {
@@ -174,7 +174,25 @@ bool PlayerMove(sf::Event& event, vector<char>& Piece)
 //     }
 // }
 
-void ComputerMove(vector<char> Piece[]) // computer uses O
+void ComputerMove(vector<char>& Piece) // computer uses O
 {
-    
+    const vector<int> HorizontalWinningConditions[] =
+    {
+        {0, 1, 2},
+        {3, 4, 5},
+        {6, 7, 8},
+    };
+
+    const vector<int> VerticalWinningConditions[] =
+    {
+        {0, 3, 6},
+        {1, 4, 7},
+        {2, 5, 8},
+    };
+
+    const vector<int> DigonalWinningConditions[] =
+    {
+        {0, 4, 8},
+        {2, 4, 6},
+    };
 }
