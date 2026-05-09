@@ -122,25 +122,25 @@ string WinnerCheacker (vector<char>& Piece)
     }
 }
 
-short inputHandler(RenderWindow& window,Event evente)
-{
-    while (window.pollEvent(evente))
-    {
-        if (evente.type == Event::KeyPressed)
-            {
-                if (evente.key.code >= Keyboard::Num1 && evente.key.code <= Keyboard::Num9)
-                {
-                    return (evente.key.code - Keyboard::Num1) + 1;
-                }
+// short inputHandler(RenderWindow& window,Event evente)
+// {
+//     while (window.pollEvent(evente))
+//     {
+//         if (evente.type == Event::KeyPressed)
+//             {
+//                 if (evente.key.code >= Keyboard::Num1 && evente.key.code <= Keyboard::Num9)
+//                 {
+//                     return (evente.key.code - Keyboard::Num1) + 1;
+//                 }
                 
-                if (evente.key.code >= Keyboard::Numpad1 && evente.key.code <= Keyboard::Numpad9)
-                {
-                    return (evente.key.code - Keyboard::Numpad1) + 1;
-                }
-            }
-    }
-    return 0;
-}
+//                 if (evente.key.code >= Keyboard::Numpad1 && evente.key.code <= Keyboard::Numpad9)
+//                 {
+//                     return (evente.key.code - Keyboard::Numpad1) + 1;
+//                 }
+//             }
+//     }
+//     return 0;
+// }
 
 bool PlayerMove(sf::Event& event, vector<char>& Piece) 
 {
@@ -161,38 +161,81 @@ bool PlayerMove(sf::Event& event, vector<char>& Piece)
     return false;
 }
 
-
-// bool FindIsSpaceOccupied (short index, vector<char>& Piece[])
-// {
-//     if (Piece[index] != 'X' && Piece[index] != 'O')
-//     {
-//         return true;
-//     }
-//     else 
-//     {
-//         return false;
-//     }
-// }
+bool FindIsSpaceOccupied (short index, vector<char>& Piece)
+{
+    if (Piece[index] != 'X' && Piece[index] != 'O')
+    {
+        return true;
+    }
+    else 
+    {
+        return false;
+    }
+}
 
 void ComputerMove(vector<char>& Piece) // computer uses O
 {
-    const vector<int> HorizontalWinningConditions[] =
+
+    bool HasPlayed = false;
+    static const int WinningConditions[8][3] =
     {
-        {0, 1, 2},
-        {3, 4, 5},
-        {6, 7, 8},
+        {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // horizontal
+        {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // vertical
+        {0, 4, 8}, {2, 4, 6},            // Digonal
     };
 
-    const vector<int> VerticalWinningConditions[] =
+    for (short i = 0; i < 8 && !HasPlayed; i++) // attack
     {
-        {0, 3, 6},
-        {1, 4, 7},
-        {2, 5, 8},
-    };
+        if (!HasPlayed && Piece.at(WinningConditions[i][0]) == 'O' && Piece.at(WinningConditions[i][1]) == 'O' && FindIsSpaceOccupied(WinningConditions[i][2], Piece))
+        {
+            Piece.at(WinningConditions[i][2]) = 'O';
+            HasPlayed = true;
+        }
+        else if (!HasPlayed && Piece.at(WinningConditions[i][0]) == 'O' && Piece.at(WinningConditions[i][2]) == 'O' && FindIsSpaceOccupied(WinningConditions[i][1], Piece))
+        {
+            Piece.at(WinningConditions[i][1]) = 'O';
+            HasPlayed = true;
+        }
+        else if (!HasPlayed && Piece.at(WinningConditions[i][1]) == 'O' && Piece.at(WinningConditions[i][2]) == 'O' && FindIsSpaceOccupied(WinningConditions[i][0], Piece))
+        {
+            Piece.at(WinningConditions[i][0]) = 'O';
+            HasPlayed = true;
+        }
+    }
+    
 
-    const vector<int> DigonalWinningConditions[] =
+    for (short i = 0; i < 8 && !HasPlayed; i++) // Defence
     {
-        {0, 4, 8},
-        {2, 4, 6},
-    };
+        if (!HasPlayed && Piece.at(WinningConditions[i][0]) == 'X' && Piece.at(WinningConditions[i][1]) == 'X' && FindIsSpaceOccupied(WinningConditions[i][2], Piece))
+        {
+            Piece.at(WinningConditions[i][2]) = 'O';
+            HasPlayed = true;
+        }
+        else if (!HasPlayed && Piece.at(WinningConditions[i][1]) == 'X' && Piece.at(WinningConditions[i][2]) == 'X' && FindIsSpaceOccupied(WinningConditions[i][0], Piece))
+        {
+            Piece.at(WinningConditions[i][0]) = 'O';
+            HasPlayed = true;
+        }
+        else if (!HasPlayed && Piece.at(WinningConditions[i][0]) == 'X' && Piece.at(WinningConditions[i][2]) == 'X' && FindIsSpaceOccupied(WinningConditions[i][1], Piece))
+        {
+            Piece.at(WinningConditions[i][1]) = 'O';
+            HasPlayed = true;
+        }
+    }
+
+    if (!HasPlayed) // if nothing then just random
+    {
+        while(!HasPlayed)
+        {
+            int random = rand() % 9;
+            if (FindIsSpaceOccupied(random, Piece))
+            {
+                Piece.at(random) = 'O';
+                HasPlayed = true;
+            }
+            
+        }
+
+    }
+    
 }
