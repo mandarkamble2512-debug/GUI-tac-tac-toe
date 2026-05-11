@@ -95,6 +95,56 @@ void Drawbord(RenderWindow& window)
     window.draw(bord3);
 }
 
+void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event event, Font font)
+{
+    string status = "?";
+    bool HasPlayerMoved = false;
+    bool HasComputerMoved = false;
+    for (short i = 0; i <= 8 ; i++)
+        {
+            switch (Piece[i])
+            {
+            case 'X':
+                DrawX(window, Pos[i]);
+                break;
+            
+            case 'O':
+                DrawO(window, Pos[i]);
+                break;
+
+            default:
+                DrawText(window, Pos[i], Piece[i], font);
+                break;
+            }
+        }
+        Drawbord(window);
+        if (status == "?")
+        {
+        while (!HasPlayerMoved && status == "?" && window.pollEvent(event))
+        {
+            if (event.type == Event::KeyPressed)
+            {
+                if (PlayerMove(event, Piece))
+                {
+                    HasPlayerMoved = true;
+                    status = WinnerCheacker(Piece);               
+                }
+            }
+        }
+
+        while (!HasComputerMoved && status == "?")
+        {
+            if(ComputerMove(Piece))
+            {
+                HasComputerMoved = true;
+                status = WinnerCheacker(Piece);
+            }
+        }
+        }
+        
+        
+        
+}
 
 int main() 
 {
@@ -103,8 +153,6 @@ int main()
     Vector2u size = window.getSize();
     Event event;
     Font font;
-    string status = "?";
-    bool HasPlayerMoved = false;
     vector<char> Piece = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     const Vector2f Pos[] = // for defining the cordinates for the X or O
         {
@@ -132,47 +180,8 @@ int main()
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
         
-        /*
-            Game Loop
-        */
-
-        for (short i = 0; i <= 8 ; i++)
-        {
-            switch (Piece[i])
-            {
-            case 'X':
-                DrawX(window, Pos[i]);
-                break;
-            
-            case 'O':
-                DrawO(window, Pos[i]);
-                break;
-
-            default:
-                DrawText(window, Pos[i], Piece[i], font);
-                break;
-            }
-        }
-        Drawbord(window);
+        PlayingState(window, Piece, Pos, event, font);
         
-        while (!HasPlayerMoved && status == "?" && window.pollEvent(event))
-        {
-            if (event.type == Event::KeyPressed)
-            {
-                if (PlayerMove(event, Piece))
-                {
-                    HasPlayerMoved = true;
-                    cout<<"player moved"<<'\n';
-                    for (short i = 0; i < 8; i++)
-                    {
-                        cout<<Piece.at(i)<<" "<<i<<'\n'; 
-                    }
-                    
-                }
-            }
-        }
-
-        // ComputerMove(Piece);
         window.display();
     }
 

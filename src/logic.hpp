@@ -173,7 +173,7 @@ bool FindIsSpaceOccupied (short index, vector<char>& Piece)
     }
 }
 
-void ComputerMove(vector<char>& Piece) // computer uses O
+bool ComputerMove(vector<char>& Piece) // computer uses O
 {
 
     bool HasPlayed = false;
@@ -190,16 +190,19 @@ void ComputerMove(vector<char>& Piece) // computer uses O
         {
             Piece.at(WinningConditions[i][2]) = 'O';
             HasPlayed = true;
+            return HasPlayed;
         }
         else if (!HasPlayed && Piece.at(WinningConditions[i][0]) == 'O' && Piece.at(WinningConditions[i][2]) == 'O' && FindIsSpaceOccupied(WinningConditions[i][1], Piece))
         {
             Piece.at(WinningConditions[i][1]) = 'O';
             HasPlayed = true;
+            return HasPlayed;
         }
         else if (!HasPlayed && Piece.at(WinningConditions[i][1]) == 'O' && Piece.at(WinningConditions[i][2]) == 'O' && FindIsSpaceOccupied(WinningConditions[i][0], Piece))
         {
             Piece.at(WinningConditions[i][0]) = 'O';
             HasPlayed = true;
+            return HasPlayed;
         }
     }
     
@@ -210,16 +213,19 @@ void ComputerMove(vector<char>& Piece) // computer uses O
         {
             Piece.at(WinningConditions[i][2]) = 'O';
             HasPlayed = true;
+            return HasPlayed;
         }
         else if (!HasPlayed && Piece.at(WinningConditions[i][1]) == 'X' && Piece.at(WinningConditions[i][2]) == 'X' && FindIsSpaceOccupied(WinningConditions[i][0], Piece))
         {
             Piece.at(WinningConditions[i][0]) = 'O';
             HasPlayed = true;
+            return HasPlayed;
         }
         else if (!HasPlayed && Piece.at(WinningConditions[i][0]) == 'X' && Piece.at(WinningConditions[i][2]) == 'X' && FindIsSpaceOccupied(WinningConditions[i][1], Piece))
         {
             Piece.at(WinningConditions[i][1]) = 'O';
             HasPlayed = true;
+            return HasPlayed;
         }
     }
 
@@ -232,10 +238,8 @@ void ComputerMove(vector<char>& Piece) // computer uses O
             {
                 Piece.at(random) = 'O';
                 HasPlayed = true;
+                return HasPlayed;
             }
-            
         }
-
     }
-    
 }
