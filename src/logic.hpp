@@ -4,23 +4,16 @@
 #include <future>
 #include <vector>
 
-using sf::Event;
-
-namespace GlobalVariables
-{
-    Event event;
-}
-
-using namespace GlobalVariables;
 using std::string;
 using std::vector;
 using std::ref;
 using std::future;
 using std::async;
 using sf::RenderWindow;
+using sf::Event;
 using sf::Keyboard;
 
- 
+
 
 string WinnerCheacker (vector<char>& Piece)
 {
@@ -151,7 +144,7 @@ string WinnerCheacker (vector<char>& Piece)
 //     return 0;
 // }
 
-bool PlayerMove(vector<char>& Piece) 
+bool PlayerMove(sf::Event& event, vector<char>& Piece) 
 {
     if (event.type == sf::Event::KeyPressed) 
     {

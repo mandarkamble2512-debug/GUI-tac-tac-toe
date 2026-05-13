@@ -122,7 +122,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
         {
             if (event.type == Event::KeyPressed)
             {
-                if (PlayerMove(Piece))
+                if (PlayerMove(event, Piece))
                 {
                     HasPlayerMoved = true;
                     status = WinnerCheacker(Piece);               
@@ -176,7 +176,6 @@ int main()
             {
                 running = false;
             }
-            GlobalVariables::event = event;
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
         
