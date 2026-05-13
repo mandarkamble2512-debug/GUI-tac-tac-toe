@@ -95,11 +95,8 @@ void Drawbord(RenderWindow& window)
     window.draw(bord3);
 }
 
-void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event event, Font font)
+void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool HasPlayerMoved, bool HasComputerMoved)
 {
-    string status = "?";
-    bool HasPlayerMoved = false;
-    bool HasComputerMoved = false;
     for (short i = 0; i <= 8 ; i++)
         {
             switch (Piece[i])
@@ -118,13 +115,14 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             }
         }
         Drawbord(window);
+        
         if (status == "?")
         {
         while (!HasPlayerMoved && status == "?" && window.pollEvent(event))
         {
             if (event.type == Event::KeyPressed)
             {
-                if (PlayerMove(event, Piece))
+                if (PlayerMove(Piece))
                 {
                     HasPlayerMoved = true;
                     status = WinnerCheacker(Piece);               
@@ -141,9 +139,6 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             }
         }
         }
-        
-        
-        
 }
 
 int main() 
@@ -153,6 +148,10 @@ int main()
     Vector2u size = window.getSize();
     Event event;
     Font font;
+    string status = "?";
+    bool HasPlayerMoved = false;
+    bool HasComputerMoved = false;
+    bool Isspaceleft = true;
     vector<char> Piece = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     const Vector2f Pos[] = // for defining the cordinates for the X or O
         {
@@ -177,10 +176,11 @@ int main()
             {
                 running = false;
             }
+            GlobalVariables::event = event;
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
         
-        PlayingState(window, Piece, Pos, event, font);
+        PlayingState(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved);
         
         window.display();
     }

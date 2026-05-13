@@ -4,14 +4,23 @@
 #include <future>
 #include <vector>
 
+using sf::Event;
+
+namespace GlobalVariables
+{
+    Event event;
+}
+
+using namespace GlobalVariables;
 using std::string;
 using std::vector;
 using std::ref;
 using std::future;
 using std::async;
 using sf::RenderWindow;
-using sf::Event;
 using sf::Keyboard;
+
+ 
 
 string WinnerCheacker (vector<char>& Piece)
 {
@@ -142,7 +151,7 @@ string WinnerCheacker (vector<char>& Piece)
 //     return 0;
 // }
 
-bool PlayerMove(sf::Event& event, vector<char>& Piece) 
+bool PlayerMove(vector<char>& Piece) 
 {
     if (event.type == sf::Event::KeyPressed) 
     {
@@ -177,6 +186,7 @@ bool ComputerMove(vector<char>& Piece) // computer uses O
 {
 
     bool HasPlayed = false;
+    bool HasFreeSpace = true;
     static const int WinningConditions[8][3] =
     {
         {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // horizontal
@@ -231,7 +241,20 @@ bool ComputerMove(vector<char>& Piece) // computer uses O
 
     if (!HasPlayed) // if nothing then just random
     {
-        while(!HasPlayed)
+        for (short i = 0; i < 9; i++)
+        {
+            if (Piece.at(i) != 'O' && Piece.at(i) != 'X')
+            {
+                HasFreeSpace = true;
+                break;
+            }
+            else
+            {
+                HasFreeSpace = false;
+            }
+        }
+        
+        while(!HasPlayed && HasFreeSpace)
         {
             int random = rand() % 9;
             if (FindIsSpaceOccupied(random, Piece))
@@ -242,4 +265,5 @@ bool ComputerMove(vector<char>& Piece) // computer uses O
             }
         }
     }
+    return HasPlayed;
 }
