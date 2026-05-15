@@ -20,7 +20,7 @@ string WinnerCheacker (vector<char>& Piece)
     bool IsBordFull = false; 
     bool hasNumbers = false;
     // 0 for draw
-    // 1 for player in
+    // 1 for player win
     // 2 for computer win
     // ? for nothing
 
@@ -50,16 +50,91 @@ string WinnerCheacker (vector<char>& Piece)
         {0, 4, 8}, {2, 4, 6},
     };
 
-    for (int i = 0; i < 9; i++)
+    for (int i = 0; i < 3; i++) // for horizontal
     {
-        if(HorizontalWinningConditions[i][0] == 'X' && HorizontalWinningConditions[i][1] == 'X' && HorizontalWinningConditions[i][2] == 'X')
+        if(Piece.at(HorizontalWinningConditions[i][0]) == 'X' && Piece.at(HorizontalWinningConditions[i][1]) == 'X' && Piece.at(HorizontalWinningConditions[i][2]) == 'X')
         {
-            if (i == 1)
+            if (i == 0)
             {
-                
+                return "1Ht";
+            }
+            else if (i == 1)
+            {
+                return "1Hm";
+            }
+            else if (i == 2)
+            {
+                return "1Hb";
+            }
+        }
+        else if (Piece.at(HorizontalWinningConditions[i][0]) == 'O' && Piece.at(HorizontalWinningConditions[i][1]) == 'O' && Piece.at(HorizontalWinningConditions[i][2]) == 'O')
+        {
+            if (i == 0)
+            {
+                return "2Ht";
+            }
+            else if (i == 1)
+            {
+                return "2Hm";
+            }
+            else if (i == 2)
+            {
+                return "2Hb";
+            }
+        }
+        
+    }
+    
+    for (int i = 0; i < 3; i++) //for vertical
+    {
+        if(Piece.at(VerticalWinningConditions[i][0]) == 'X' && Piece.at(VerticalWinningConditions[i][1]) == 'X' && Piece.at(VerticalWinningConditions[i][2]) == 'X')
+        {
+            if (i == 0)
+            {
+                return "1Vl";
+            }
+            else if (i == 1)
+            {
+                return "1Vm";
+            }
+            else if (i == 2)
+            {
+                return "1Vr";
+            }
+        }
+        else if (Piece.at(HorizontalWinningConditions[i][0]) == 'O' && Piece.at(HorizontalWinningConditions[i][1]) == 'O' && Piece.at(HorizontalWinningConditions[i][2]) == 'O')
+        {
+            if (i == 0)
+            {
+                return "2Vl";
+            }
+            else if (i == 1)
+            {
+                return "2Vm";
+            }
+            else if (i == 2)
+            {
+                return "2Vr";
             }
         }
     }
+    
+    for (int i = 0; i < 2; i++) // for digonal
+    {
+        if (Piece.at(DigonalWinningConditions[i][0]) == 'X' && Piece.at(DigonalWinningConditions[i][1])  == 'X' && Piece.at(DigonalWinningConditions[i][2] == 'X'))
+        {
+            if (i == 0)
+            {
+                return "|";
+            }
+            else 
+            {
+                return "/";
+            }
+        }
+    }   
+
+    
     
     // // for vertical
     // if (Piece[1] == 'X' && Piece[4] == 'X' && Piece[7] == 'X')
