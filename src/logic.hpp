@@ -35,93 +35,107 @@ string WinnerCheacker (vector<char>& Piece)
     // "/" for diognal 
     // "|" also for digonal
 
-    // for vertical
-    if (Piece[1] == 'X' && Piece[4] == 'X' && Piece[7] == 'X')
+    static const int HorizontalWinningConditions[3][3] = 
     {
-        return "1Vm";
-    }
-    else if (Piece[1] == 'O' && Piece[4] == 'O' && Piece[7] == 'O')
-    {
-        return "2Vm";
-    }
-    else if (Piece[0] == 'X' && Piece[3] == 'X' && Piece[6] == 'X')
-    {
-        return "1Vl";
-    }
-    else if (Piece[0] == 'O' && Piece[3] == 'O' && Piece[6] == 'O')
-    {
-        return "2Vl";
-    }
-    else if (Piece[2] == 'X' && Piece[5] == 'X' && Piece[8] == 'X')
-    {
-        return "1Vr";
-    }
-    else if (Piece[2] == 'O' && Piece[5] == 'O' && Piece[8] == 'O')
-    {
-        return "2Vr";
-    }
+        {0, 1, 2}, {3, 4, 5}, {6, 7, 8}
+    };
 
-    // for horizontal
-    else if (Piece[0] == 'X' && Piece[1] == 'X' && Piece[2] == 'X')
+    static const int VerticalWinningConditions[3][3] = 
     {
-        return "1Ht";
-    }
-    else if (Piece[0] == 'O' && Piece[1] == 'O' && Piece[2] == 'O')
+           {0, 3, 6}, {1, 4, 7}, {2, 5, 8},
+    };
+
+    static const int DigonalWinningConditions[2][3] =
     {
-        return "2Ht";
-    }
-    else if (Piece[3] == 'X' && Piece[4] == 'X' && Piece[5] == 'X')
-    {
-        return "1Hm";
-    }
-    else if (Piece[3] == 'O' && Piece[4] == 'O' && Piece[5] == 'O')
-    {
-        return "2Hm";
-    }
-    else if (Piece[6] == 'X' && Piece[7] == 'X' && Piece[8] == 'X')
-    {
-        return "1Hb";
-    }
-    else if (Piece[6] == 'O' && Piece[7] == 'O' && Piece[8] == 'O')
-    {
-        return "2Hb";
-    }
+        {0, 4, 8}, {2, 4, 6},
+    };
+    // // for vertical
+    // if (Piece[1] == 'X' && Piece[4] == 'X' && Piece[7] == 'X')
+    // {
+    //     return "1Vm";
+    // }
+    // else if (Piece[1] == 'O' && Piece[4] == 'O' && Piece[7] == 'O')
+    // {
+    //     return "2Vm";
+    // }
+    // else if (Piece[0] == 'X' && Piece[3] == 'X' && Piece[6] == 'X')
+    // {
+    //     return "1Vl";
+    // }
+    // else if (Piece[0] == 'O' && Piece[3] == 'O' && Piece[6] == 'O')
+    // {
+    //     return "2Vl";
+    // }
+    // else if (Piece[2] == 'X' && Piece[5] == 'X' && Piece[8] == 'X')
+    // {
+    //     return "1Vr";
+    // }
+    // else if (Piece[2] == 'O' && Piece[5] == 'O' && Piece[8] == 'O')
+    // {
+    //     return "2Vr";
+    // }
+
+    // // for horizontal
+    // else if (Piece[0] == 'X' && Piece[1] == 'X' && Piece[2] == 'X')
+    // {
+    //     return "1Ht";
+    // }
+    // else if (Piece[0] == 'O' && Piece[1] == 'O' && Piece[2] == 'O')
+    // {
+    //     return "2Ht";
+    // }
+    // else if (Piece[3] == 'X' && Piece[4] == 'X' && Piece[5] == 'X')
+    // {
+    //     return "1Hm";
+    // }
+    // else if (Piece[3] == 'O' && Piece[4] == 'O' && Piece[5] == 'O')
+    // {
+    //     return "2Hm";
+    // }
+    // else if (Piece[6] == 'X' && Piece[7] == 'X' && Piece[8] == 'X')
+    // {
+    //     return "1Hb";
+    // }
+    // else if (Piece[6] == 'O' && Piece[7] == 'O' && Piece[8] == 'O')
+    // {
+    //     return "2Hb";
+    // }
     
 
-    // for Digonal
-    else if (Piece[2] == 'X' && Piece[4] == 'X' && Piece[6] == 'X')
-    {
-        return "1/";
-    }
-    else if (Piece[2] == 'O' && Piece[4] == 'O' && Piece[6] == 'O')
-    {
-        return "2/";
-    }
-    else if (Piece[0] == 'X' && Piece[4] == 'X' && Piece[8] == 'X')
-    {
-        return "1|";
-    }
-    else if (Piece[0] == 'O' && Piece[4] == 'O' && Piece[8] == 'O')
-    {
-        return "2|";
-    }
-    else
-    {
-        for (short i = 0; i <= 8; i++)
-        {
-            if (Piece[i] != 'X' && Piece[i] != 'O')
-            {
-                hasNumbers = true;
-                break;
-            }
-        }
-        if (hasNumbers)
-        {
-            return "?";
-        }
-        else return "0";
+    // // for Digonal
+    // else if (Piece[2] == 'X' && Piece[4] == 'X' && Piece[6] == 'X')
+    // {
+    //     return "1/";
+    // }
+    // else if (Piece[2] == 'O' && Piece[4] == 'O' && Piece[6] == 'O')
+    // {
+    //     return "2/";
+    // }
+    // else if (Piece[0] == 'X' && Piece[4] == 'X' && Piece[8] == 'X')
+    // {
+    //     return "1|";
+    // }
+    // else if (Piece[0] == 'O' && Piece[4] == 'O' && Piece[8] == 'O')
+    // {
+    //     return "2|";
+    // }
+    // else
+    // {
+    //     for (short i = 0; i <= 8; i++)
+    //     {
+    //         if (Piece[i] != 'X' && Piece[i] != 'O')
+    //         {
+    //             hasNumbers = true;
+    //             break;
+    //         }
+    //     }
+    //     if (hasNumbers)
+    //     {
+    //         return "?";
+    //     }
+    //     else return "0";
          
-    }
+    // }
 }
 
 // short inputHandler(RenderWindow& window,Event evente)
