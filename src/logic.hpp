@@ -49,6 +49,18 @@ string WinnerCheacker (vector<char>& Piece)
     {
         {0, 4, 8}, {2, 4, 6},
     };
+
+    for (int i = 0; i < 9; i++)
+    {
+        if(HorizontalWinningConditions[i][0] == 'X' && HorizontalWinningConditions[i][1] == 'X' && HorizontalWinningConditions[i][2] == 'X')
+        {
+            if (i == 1)
+            {
+                
+            }
+        }
+    }
+    
     // // for vertical
     // if (Piece[1] == 'X' && Piece[4] == 'X' && Piece[7] == 'X')
     // {
