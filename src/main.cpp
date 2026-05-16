@@ -31,7 +31,11 @@ void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
 {
     char character;
     bool HasPlayerWon   = false;
-    bool HasComputerWon = true;
+    bool HasComputerWon = false;
+    bool IsHorizontal   = false;
+    bool IsVertical     = false;
+    bool IsDigonal      = false;
+
     for (short i = 0; i < Status.length(); i++)
     {
         if (i == 0)
@@ -51,7 +55,6 @@ void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
                 case '0' || '?':
                     // will make a function for this later
                     break;
-
                 default:
                     break;
                 }
