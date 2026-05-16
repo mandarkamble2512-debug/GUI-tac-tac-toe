@@ -11,6 +11,7 @@ using std::endl;
 using std::cout;
 using std::atomic;
 using std::string;
+using std::string::length;
 using std::vector;
 using sf::RenderWindow;
 using sf::VideoMode;
@@ -27,8 +28,19 @@ using sf::Keyboard;
 
 atomic<bool> running(true);
 
+void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
+{
+    char character;
+    for (short i = 0; i < Status.length; i++)
+    {
+        /* code */
+    }
+    
+    
+    
+}
 
-void DrawText (RenderWindow& window, Vector2f pos, char Piece, const Font& font) 
+void DrawText (RenderWindow& window, Vector2f pos, char Piece, const Font& font)
 {
     Text text;
     short TextSize = 130;
@@ -165,7 +177,7 @@ int main()
     const Vector2f Pos[] = // for defining the cordinates for the X or O
         {
         Vector2f(130 , 130),                                           // 0
-        Vector2f((Pos[0].x + (size.x * 1.0f/3.0f)), Pos[0].y),     // 1
+        Vector2f((Pos[0].x + (size.x * 1.0f/3.0f)), Pos[0].y),         // 1
         Vector2f(Pos[1].x + (size.x * 1.0f/3.0f), Pos[0].y),           // 2
         Vector2f(Pos[0].x, Pos[0].y + (1.0f/3.0f * size.y)),           // 3
         Vector2f(Pos[1].x, Pos[3].y),                                  // 4
