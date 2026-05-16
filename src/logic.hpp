@@ -17,6 +17,7 @@ using sf::Keyboard;
 
 string WinnerCheacker (vector<char>& Piece)
 {
+    bool Hasplayed  = false;
     bool IsBordFull = false; 
     bool hasNumbers = false;
     // 0 for draw
@@ -50,92 +51,136 @@ string WinnerCheacker (vector<char>& Piece)
         {0, 4, 8}, {2, 4, 6},
     };
 
-    for (int i = 0; i < 3; i++) // for horizontal
+    for (int i = 0; i < 3 && !Hasplayed; i++) // for horizontal
     {
-        if(Piece.at(HorizontalWinningConditions[i][0]) == 'X' && Piece.at(HorizontalWinningConditions[i][1]) == 'X' && Piece.at(HorizontalWinningConditions[i][2]) == 'X')
+        if(Piece.at(HorizontalWinningConditions[i][0]) == 'X' && Piece.at(HorizontalWinningConditions[i][1]) == 'X' && Piece.at(HorizontalWinningConditions[i][2]) == 'X' && !Hasplayed)
         {
             if (i == 0)
             {
                 return "1Ht";
+                Hasplayed = true;
             }
             else if (i == 1)
             {
                 return "1Hm";
+                Hasplayed = true;
+
             }
             else if (i == 2)
             {
                 return "1Hb";
+                Hasplayed = true;
+
             }
         }
-        else if (Piece.at(HorizontalWinningConditions[i][0]) == 'O' && Piece.at(HorizontalWinningConditions[i][1]) == 'O' && Piece.at(HorizontalWinningConditions[i][2]) == 'O')
+        else if (Piece.at(HorizontalWinningConditions[i][0]) == 'O' && Piece.at(HorizontalWinningConditions[i][1]) == 'O' && Piece.at(HorizontalWinningConditions[i][2]) == 'O' && !Hasplayed)
         {
             if (i == 0)
             {
+                Hasplayed = true;
                 return "2Ht";
             }
             else if (i == 1)
             {
+                Hasplayed = true;
                 return "2Hm";
             }
             else if (i == 2)
             {
+                Hasplayed = true;
                 return "2Hb";
             }
         }
         
     }
     
-    for (int i = 0; i < 3; i++) //for vertical
+    for (int i = 0; i < 3 && !Hasplayed; i++) //for vertical
     {
-        if(Piece.at(VerticalWinningConditions[i][0]) == 'X' && Piece.at(VerticalWinningConditions[i][1]) == 'X' && Piece.at(VerticalWinningConditions[i][2]) == 'X')
+        if(Piece.at(VerticalWinningConditions[i][0]) == 'X' && Piece.at(VerticalWinningConditions[i][1]) == 'X' && Piece.at(VerticalWinningConditions[i][2]) == 'X' && !Hasplayed)
         {
             if (i == 0)
             {
+                Hasplayed = true;
                 return "1Vl";
             }
             else if (i == 1)
             {
+                Hasplayed = true;
                 return "1Vm";
             }
             else if (i == 2)
             {
+                Hasplayed = true;
                 return "1Vr";
             }
         }
-        else if (Piece.at(HorizontalWinningConditions[i][0]) == 'O' && Piece.at(HorizontalWinningConditions[i][1]) == 'O' && Piece.at(HorizontalWinningConditions[i][2]) == 'O')
+        else if (Piece.at(VerticalWinningConditions[i][0]) == 'O' && Piece.at(VerticalWinningConditions[i][1]) == 'O' && Piece.at(VerticalWinningConditions[i][2]) == 'O' && !Hasplayed)
         {
             if (i == 0)
             {
+                Hasplayed = true;
                 return "2Vl";
             }
             else if (i == 1)
             {
+                Hasplayed = true;
                 return "2Vm";
             }
             else if (i == 2)
             {
+                Hasplayed = true;
                 return "2Vr";
             }
         }
     }
     
-    for (int i = 0; i < 2; i++) // for digonal
+    for (int i = 0; i < 2 && !Hasplayed; i++) // for digonal
     {
-        if (Piece.at(DigonalWinningConditions[i][0]) == 'X' && Piece.at(DigonalWinningConditions[i][1])  == 'X' && Piece.at(DigonalWinningConditions[i][2] == 'X'))
+        if (Piece.at(DigonalWinningConditions[i][0]) == 'X' && Piece.at(DigonalWinningConditions[i][1])  == 'X' && Piece.at(DigonalWinningConditions[i][2])  == 'X' && !Hasplayed)
         {
             if (i == 0)
             {
-                return "|";
+                Hasplayed = true;
+                return "1|";
             }
             else 
             {
-                return "/";
+                Hasplayed = true;
+                return "1/";
             }
         }
-    }   
+        if (Piece.at(DigonalWinningConditions[i][0]) == 'O' && Piece.at(DigonalWinningConditions[i][1])  == 'O' && Piece.at(DigonalWinningConditions[i][2])  == 'O' && !Hasplayed)
+        {
+            if (i == 0)
+            {
+                Hasplayed = true;
+                return "2|";
+            }
+            else 
+            {
+                Hasplayed = true;
+                return "2/";
+            }
+        }
+    }
+    
+    if (!Hasplayed)
+    {
+        for (short i = 0; i <= 8; i++)
+        {
+            if (Piece[i] != 'X' && Piece[i] != 'O')
+            {
+                hasNumbers = true;
+                break;
+            }
+        }
+        if (hasNumbers)
+        {
+            return "?";
+        }
+        else return "0";
+    }
 
-    
-    
     // // for vertical
     // if (Piece[1] == 'X' && Piece[4] == 'X' && Piece[7] == 'X')
     // {

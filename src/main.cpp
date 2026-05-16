@@ -95,7 +95,7 @@ void Drawbord(RenderWindow& window)
     window.draw(bord3);
 }
 
-void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool HasPlayerMoved, bool HasComputerMoved)
+void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved)
 {
     for (short i = 0; i <= 8 ; i++)
         {
@@ -138,6 +138,15 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
                 status = WinnerCheacker(Piece);
             }
         }
+        }
+
+        status = WinnerCheacker(Piece);
+        cout<<status<<'\n';
+        
+        if (HasPlayerMoved && HasComputerMoved)
+        {
+            HasPlayerMoved   = false;
+            HasComputerMoved = false; 
         }
 }
 
