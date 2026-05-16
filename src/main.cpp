@@ -11,7 +11,6 @@ using std::endl;
 using std::cout;
 using std::atomic;
 using std::string;
-using std::string::length;
 using std::vector;
 using sf::RenderWindow;
 using sf::VideoMode;
@@ -31,13 +30,34 @@ atomic<bool> running(true);
 void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
 {
     char character;
-    for (short i = 0; i < Status.length; i++)
+    bool HasPlayerWon   = false;
+    bool HasComputerWon = true;
+    for (short i = 0; i < Status.length(); i++)
     {
-        /* code */
+        if (i == 0)
+        {
+            if (Status.at(i) == 1)
+            {
+                switch (Status.at(i))
+                {
+                case '1':
+                    HasPlayerWon = true;
+                    break;
+                
+                case '2':
+                    HasComputerWon = true;
+                    break;
+                    
+                case '0' || '?':
+                    // will make a function for this later
+                    break;
+
+                default:
+                    break;
+                }
+            }
+        }
     }
-    
-    
-    
 }
 
 void DrawText (RenderWindow& window, Vector2f pos, char Piece, const Font& font)
