@@ -30,6 +30,7 @@ atomic<bool> running(true);
 void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
 {
     char character;
+    short LinePlace = 0;
     bool HasPlayerWon   = false;
     bool HasComputerWon = false;
     bool IsHorizontal   = false;
@@ -70,8 +71,23 @@ void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
             case 'H':
                 IsHorizontal = true;
                 break;
-            default:
+            }
+        }
+
+        if(i == 2 && IsVertical)
+        {
+            switch (Status.at(i))
+            {
+            case 'l':
+                LinePlace = 1;
                 break;
+            
+            case 'm':
+                LinePlace = 2;
+                break;
+            
+            case 'r':
+                LinePlace = 3;
             }
         }
     }
