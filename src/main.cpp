@@ -55,9 +55,23 @@ void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
                 case '0' || '?':
                     // will make a function for this later
                     break;
-                default:
-                    break;
                 }
+            }
+        }
+
+        if (i == 1)
+        {
+            switch (Status.at(i))
+            {
+            case 'V':
+                IsVertical = true;
+                break;
+            
+            case 'H':
+                IsHorizontal = true;
+                break;
+            default:
+                break;
             }
         }
     }
