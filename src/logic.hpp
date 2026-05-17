@@ -21,11 +21,11 @@ struct CurrentGameState
     bool IsVertical        = false;
     bool IsDigonalTopLeft  = false;
     bool IsDigonalTopRight = false;
+    short LinePlace          = 0;
 };
 
-vector<bool> StatusStringDecoder (string Status)
+vector<bool> StatusStringDecoder (string Status, CurrentGameState& state)
 {
-    char character;
     short LinePlace        = 0;
     bool HasPlayerWon      = false;
     bool HasComputerWon    = false;
@@ -90,19 +90,34 @@ vector<bool> StatusStringDecoder (string Status)
             {
             case 'l':
                 LinePlace = 1;
+                state.LinePlace = LinePlace;
                 break;
             
             case 'm':
                 LinePlace = 2;
+                state.LinePlace = LinePlace;
                 break;
             
             case 'r':
                 LinePlace = 3;
+                state.LinePlace = LinePlace;
+                break;
             }
         }
     }
 
     return {HasPlayerWon, HasComputerWon, IsHorizontal, IsVertical, IsDigonalTopLeft, IsDigonalTopRight};
+}
+
+void CurrentGameStateSetter (string status, CurrentGameState& state)
+{
+    vector<bool> decoded = StatusStringDecoder(status, state);
+    state.HasPlayerWon      = decoded[0];
+    state.HasComputerWon    = decoded[1];
+    state.IsHorizontal      = decoded[2];
+    state.IsVertical        = decoded[3];
+    state.IsDigonalTopLeft  = decoded[4];
+    state.IsDigonalTopRight = decoded[5];
 }
 
 string WinnerCheacker (vector<char>& Piece)
@@ -147,19 +162,19 @@ string WinnerCheacker (vector<char>& Piece)
         {
             if (i == 0)
             {
-                return "1Ht";
                 Hasplayed = true;
+                return "1Ht";
             }
             else if (i == 1)
             {
-                return "1Hm";
                 Hasplayed = true;
+                return "1Hm";
 
             }
             else if (i == 2)
             {
-                return "1Hb";
                 Hasplayed = true;
+                return "1Hb";
 
             }
         }
