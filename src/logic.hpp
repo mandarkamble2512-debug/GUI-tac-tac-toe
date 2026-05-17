@@ -94,7 +94,7 @@ string WinnerCheacker (vector<char>& Piece)
         
     }
     
-    for (int i = 0; i < 3 && !Hasplayed; i++) //for vertical
+    for (int i = 0; i < 3 && !Hasplayed; i++) //for vertical 
     {
         if(Piece.at(VerticalWinningConditions[i][0]) == 'X' && Piece.at(VerticalWinningConditions[i][1]) == 'X' && Piece.at(VerticalWinningConditions[i][2]) == 'X' && !Hasplayed)
         {

@@ -27,7 +27,7 @@ using sf::Keyboard;
 
 atomic<bool> running(true);
 
-void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
+vector<bool> StatusStringDecoder (RenderWindow& window, Vector2f Pos, string Status)
 {
     char character;
     short LinePlace        = 0;
@@ -42,7 +42,7 @@ void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
     {
         if (i == 0)
         {
-            if (Status.at(i) == 0)
+            if (Status.at(i) == '0')
             {
                 switch (Status.at(i))
                 {
@@ -54,9 +54,11 @@ void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
                     HasComputerWon = true;
                     break;
                     
-                case '0' || '?':
+                case '0':
                     // will make a function for this later
                     break;
+                case '?':
+                    // also will do something about this
                 }
             }
         }
@@ -84,7 +86,7 @@ void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
                 break;
             
             case '|':
-                IsDigonalTopRight = true;
+                IsDigonalTopLeft = true;
                 break;
             }
         }
@@ -106,6 +108,8 @@ void DrawWinningLines (RenderWindow& window, Vector2f Pos, string Status)
             }
         }
     }
+
+    return {HasPlayerWon, HasComputerWon, IsHorizontal, IsVertical, IsDigonalTopLeft, IsDigonalTopRight};
 }
 
 void DrawText (RenderWindow& window, Vector2f pos, char Piece, const Font& font)
@@ -219,10 +223,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             }
         }
         }
-
-        status = WinnerCheacker(Piece);
-        cout<<status<<'\n';
-        
+  
         if (HasPlayerMoved && HasComputerMoved)
         {
             HasPlayerMoved   = false;
