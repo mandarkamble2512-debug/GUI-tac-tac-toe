@@ -13,7 +13,87 @@ using sf::RenderWindow;
 using sf::Event;
 using sf::Keyboard;
 
+vector<bool> StatusStringDecoder (string Status)
+{
+    char character;
+    short LinePlace        = 0;
+    bool HasPlayerWon      = false;
+    bool HasComputerWon    = false;
+    bool IsHorizontal      = false;
+    bool IsVertical        = false;
+    bool IsDigonalTopLeft  = false;
+    bool IsDigonalTopRight = false;
 
+    for (short i = 0; i < Status.length(); i++)
+    {
+        if (i == 0)
+        {
+                switch (Status.at(i))
+                {
+                case '1':
+                    HasPlayerWon = true;
+                    break;
+                
+                case '2':
+                    HasComputerWon = true;
+                    break;
+                    
+                case '0':
+                    // will make a function for this later
+                    break;
+                case '?':
+                    // also will do something about this
+                }
+        }
+
+        if (i == 1)
+        {
+            switch (Status.at(i))
+            {
+            case 'V':
+                IsVertical = true;
+                break;
+            
+            case 'H':
+                IsHorizontal = true;
+                break;
+            }
+        }
+
+        if (i == 1)
+        {
+            switch (Status.at(i))
+            {
+            case '/':
+                IsDigonalTopRight = true;
+                break;
+            
+            case '|':
+                IsDigonalTopLeft = true;
+                break;
+            }
+        }
+
+        if(i == 2 && IsVertical)
+        {
+            switch (Status.at(i))
+            {
+            case 'l':
+                LinePlace = 1;
+                break;
+            
+            case 'm':
+                LinePlace = 2;
+                break;
+            
+            case 'r':
+                LinePlace = 3;
+            }
+        }
+    }
+
+    return {HasPlayerWon, HasComputerWon, IsHorizontal, IsVertical, IsDigonalTopLeft, IsDigonalTopRight};
+}
 
 string WinnerCheacker (vector<char>& Piece)
 {
