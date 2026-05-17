@@ -13,6 +13,16 @@ using sf::RenderWindow;
 using sf::Event;
 using sf::Keyboard;
 
+struct CurrentGameState
+{
+    bool HasPlayerWon      = false;
+    bool HasComputerWon    = false;
+    bool IsHorizontal      = false;
+    bool IsVertical        = false;
+    bool IsDigonalTopLeft  = false;
+    bool IsDigonalTopRight = false;
+};
+
 vector<bool> StatusStringDecoder (string Status)
 {
     char character;
