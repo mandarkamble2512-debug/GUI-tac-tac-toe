@@ -53,6 +53,7 @@ vector<bool> StatusStringDecoder (string Status, CurrentGameState& state)
                     break;
                 case '?':
                     // also will do something about this
+                    break;
                 }
         }
 
@@ -283,8 +284,8 @@ string WinnerCheacker (vector<char>& Piece)
         {
             return "?";
         }
-        else return "0";
     }
+    return "0";
 }
 
 
