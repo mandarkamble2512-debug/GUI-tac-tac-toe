@@ -3,6 +3,7 @@
 #include <vector>
 #include <atomic>
 #include <chrono>
+#include "logic.hpp"
 
 using std::ref;
 using std::endl;
@@ -22,6 +23,17 @@ using sf::CircleShape;
 using sf::Font;
 using sf::Text;
 using sf::Keyboard;
+
+void DrawWinningLines (RenderWindow& window, CurrentGameState& State)
+{
+    Vector2u size = window.getSize();
+    Vector2u LineSize(10, size.y);
+    // RectangleShape WinningLine(LineSize);
+    if (State.IsHorizontal)
+    {
+        
+    }
+}
 
 void DrawText (RenderWindow& window, Vector2f pos, char Piece, const Font& font)
 {
@@ -85,7 +97,7 @@ void Drawbord(RenderWindow& window)
     bord3.setPosition(10,(size.y * 1/3) * 2);
 
     window.draw(bord1);
-    window.draw(bord);
+    window.draw(bord );
     window.draw(bord2);
     window.draw(bord3);
 }
