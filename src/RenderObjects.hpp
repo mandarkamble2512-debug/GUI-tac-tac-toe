@@ -24,14 +24,32 @@ using sf::Font;
 using sf::Text;
 using sf::Keyboard;
 
-void DrawWinningLines (RenderWindow& window, CurrentGameState& State)
+void DrawWinningLines (RenderWindow& window, CurrentGameState& State, const Vector2f Pos[])
 {
     Vector2u size = window.getSize();
-    Vector2u LineSize(10, size.y);
-    // RectangleShape WinningLine(LineSize);
+    RectangleShape WinningLineHorizontal(Vector2f(size.x - 20, 10));
+    RectangleShape WinningLineVertical(Vector2f(10, size.y - 20));
+
+    WinningLineHorizontal.setFillColor(Color(128, 128, 128));
+    WinningLineVertical.setFillColor(Color(128,128,128));
+
     if (State.IsHorizontal)
     {
-        
+        if (State.LinePlace == 1)
+        {
+            WinningLineHorizontal.setPosition(Vector2f(10, 65));
+            window.draw(WinningLineHorizontal);
+        }
+        else if (State.LinePlace == 2)
+        {
+            WinningLineHorizontal.setPosition(Vector2f(10, 65 + size.y * (1.0f/3.0f)));
+            window.draw(WinningLineHorizontal);
+        }
+        else if (State.LinePlace == 3)
+        {
+            WinningLineHorizontal.setPosition(Vector2f(10, 65 + 2 * (size.y * (1.0f/3.0f))));
+            window.draw(WinningLineHorizontal);
+        }
     }
 }
 
