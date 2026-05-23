@@ -1,10 +1,10 @@
+#pragma once;
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
 #include <atomic>
 #include <chrono>
 #include "logic.hpp"
-#pragma once;
 
 using std::ref;
 using std::endl;
