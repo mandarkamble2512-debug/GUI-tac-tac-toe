@@ -4,6 +4,7 @@
 #include <atomic>
 #include <chrono>
 #include "logic.hpp"
+#pragma once;
 
 using std::ref;
 using std::endl;
@@ -29,6 +30,7 @@ void DrawWinningLines (RenderWindow& window, CurrentGameState& State, const Vect
     Vector2u size = window.getSize();
     RectangleShape WinningLineHorizontal(Vector2f(size.x - 20, 10));
     RectangleShape WinningLineVertical(Vector2f(10, size.y - 20));
+    RectangleShape WinningLineDigonal(Vector2f(1130, size.y - 20));
 
     WinningLineHorizontal.setFillColor(Color(128, 128, 128));
     WinningLineVertical.setFillColor(Color(128,128,128));
@@ -71,13 +73,17 @@ void DrawWinningLines (RenderWindow& window, CurrentGameState& State, const Vect
     }
     else if (State.IsDigonalTopLeft)
     {
-        WinningLineVertical.setPosition(Vector2f(65 + size.x * (1.0f/3.0f), 10));
-        WinningLineVertical.setRotation(-45);
+        WinningLineDigonal.setPosition(Vector2f(size.x / 2.0f, size.y / 2.0f));
+        WinningLineDigonal.setOrigin(Vector2f(5, 565));
+        WinningLineDigonal.setRotation(-45);
+        window.draw(WinningLineDigonal);
     }
     else if (State.IsDigonalTopRight)
     {
-        WinningLineVertical.setPosition(Vector2f(65 + size.x * (1.0f/3.0f), 10));
-        WinningLineVertical.setRotation(45);
+        WinningLineDigonal.setPosition(Vector2f(size.x / 2.0f, size.y / 2.0f));
+        WinningLineDigonal.setOrigin(Vector2f(5, 565));
+        WinningLineDigonal.setRotation(45);
+        window.draw(WinningLineDigonal);
     }
 }
 
