@@ -69,6 +69,16 @@ void DrawWinningLines (RenderWindow& window, CurrentGameState& State, const Vect
             window.draw(WinningLineVertical);
         }
     }
+    else if (State.IsDigonalTopLeft)
+    {
+        WinningLineVertical.setPosition(Vector2f(65 + size.x * (1.0f/3.0f), 10));
+        WinningLineVertical.setRotation(-45);
+    }
+    else if (State.IsDigonalTopRight)
+    {
+        WinningLineVertical.setPosition(Vector2f(65 + size.x * (1.0f/3.0f), 10));
+        WinningLineVertical.setRotation(45);
+    }
 }
 
 void DrawText (RenderWindow& window, Vector2f pos, char Piece, const Font& font)
