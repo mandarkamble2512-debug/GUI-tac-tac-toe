@@ -51,6 +51,24 @@ void DrawWinningLines (RenderWindow& window, CurrentGameState& State, const Vect
             window.draw(WinningLineHorizontal);
         }
     }
+    else if (State.IsVertical)
+    {
+        if (State.LinePlace == 1)
+        {
+            WinningLineVertical.setPosition(Vector2f(65, 10));
+            window.draw(WinningLineVertical);
+        }
+        else if (State.LinePlace == 2)
+        {
+            WinningLineVertical.setPosition(Vector2f(65 + size.x * (1.0f/3.0f), 10));
+            window.draw(WinningLineVertical);
+        }
+        else if (State.LinePlace == 3)
+        {
+            WinningLineVertical.setPosition(Vector2f(65 + 2 * (size.x * (1.0f/3.0f)), 10));
+            window.draw(WinningLineVertical);
+        }
+    }
 }
 
 void DrawText (RenderWindow& window, Vector2f pos, char Piece, const Font& font)
