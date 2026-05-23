@@ -30,7 +30,7 @@ void DrawWinningLines (RenderWindow& window, CurrentGameState& State, const Vect
     Vector2u size = window.getSize();
     RectangleShape WinningLineHorizontal(Vector2f(size.x - 20, 10));
     RectangleShape WinningLineVertical(Vector2f(10, size.y - 20));
-    RectangleShape WinningLineDigonal(Vector2f(1130, size.y - 20));
+    RectangleShape WinningLineDigonal(Vector2f(size.x - 20, 1130));
 
     WinningLineHorizontal.setFillColor(Color(128, 128, 128));
     WinningLineVertical.setFillColor(Color(128,128,128));
