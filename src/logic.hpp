@@ -25,7 +25,7 @@ struct CurrentGameState
     short LinePlace          = 0;
 };
 
-vector<bool> StatusStringDecoder (string Status, CurrentGameState state)
+vector<bool> StatusStringDecoder (RenderWindow& window, string Status, CurrentGameState state, Font font)
 {
     short LinePlace        = 0;
     bool HasPlayerWon      = false;
@@ -50,7 +50,7 @@ vector<bool> StatusStringDecoder (string Status, CurrentGameState state)
                     break;
                     
                 case '0':
-                    // will make a function for this later
+                    DrawTieText(window, font);
                     break;
                 case '?':
                     // also will do something about this
@@ -111,9 +111,9 @@ vector<bool> StatusStringDecoder (string Status, CurrentGameState state)
     return {HasPlayerWon, HasComputerWon, IsHorizontal, IsVertical, IsDigonalTopLeft, IsDigonalTopRight};
 }
 
-void CurrentGameStateSetter (string status, CurrentGameState& state)
+void CurrentGameStateSetter (RenderWindow& window ,string status, CurrentGameState& state, Font font)
 {
-    vector<bool> decoded = StatusStringDecoder(status, state);
+    vector<bool> decoded = StatusStringDecoder(window ,status, state, font);
     state.HasPlayerWon      = decoded[0];
     state.HasComputerWon    = decoded[1];
     state.IsHorizontal      = decoded[2];
