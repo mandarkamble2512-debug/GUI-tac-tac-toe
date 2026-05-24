@@ -1,3 +1,4 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <ctime>
@@ -24,7 +25,7 @@ struct CurrentGameState
     short LinePlace          = 0;
 };
 
-vector<bool> StatusStringDecoder (string Status, CurrentGameState& state)
+vector<bool> StatusStringDecoder (string Status, CurrentGameState state)
 {
     short LinePlace        = 0;
     bool HasPlayerWon      = false;

@@ -18,7 +18,7 @@ atomic<bool> running(true);
 
 void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved)
 {
-    for (short i = 0; i <= 8 ; i++)
+    for (short i = 0; i <= 8 ; i++) // for drawing bord
         {
             switch (Piece[i])
             {
@@ -37,7 +37,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
         }
         Drawbord(window);
         
-        if (status == "?")
+        if (status == "?") // for Player move
         {
         while (!HasPlayerMoved && status == "?" && window.pollEvent(event))
         {
@@ -51,7 +51,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             }
         }
 
-        while (!HasComputerMoved && status == "?")
+        while (!HasComputerMoved && status == "?") // for computer move
         {
             if(ComputerMove(Piece))
             {
@@ -66,6 +66,8 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             HasPlayerMoved   = false;
             HasComputerMoved = false; 
         }
+        
+        DrawTieText(window, font);
 }
 
 int main() 

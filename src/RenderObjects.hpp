@@ -1,4 +1,4 @@
-#pragma once;
+#pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
@@ -6,12 +6,9 @@
 #include <chrono>
 #include "logic.hpp"
 
-using std::ref;
-using std::endl;
-using std::cout;
-using std::atomic;
 using std::string;
 using std::vector;
+using sf::FloatRect;
 using sf::RenderWindow;
 using sf::VideoMode;
 using sf::Event;
@@ -24,6 +21,23 @@ using sf::CircleShape;
 using sf::Font;
 using sf::Text;
 using sf::Keyboard;
+
+void DrawTieText (RenderWindow& window, Font font)
+{
+    string draw = "Draw";
+    Text text;
+    short TextSize = 260;
+    text.setCharacterSize(TextSize);
+    text.setFont(font);
+    text.setString(draw);
+    text.setPosition(Vector2f(Vector2f(400, 400)));
+    text.setFillColor(Color(128, 128, 128));
+
+    FloatRect TextBoundryes = text.getLocalBounds();
+    text.setOrigin(Vector2f(TextBoundryes.left + TextBoundryes.width/2, TextBoundryes.top + TextBoundryes.height/2));
+
+    window.draw(text);
+}
 
 void DrawWinningLines (RenderWindow& window, CurrentGameState& State, const Vector2f Pos[])
 {
