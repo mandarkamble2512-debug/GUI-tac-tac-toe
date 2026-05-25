@@ -53,7 +53,7 @@ vector<bool> StatusStringDecoder (RenderWindow& window, string Status, CurrentGa
                     break;
                     
                 case '0':
-                    
+                    IsTie = true;
                     break;
                 case '?':
                     // also will do something about this
