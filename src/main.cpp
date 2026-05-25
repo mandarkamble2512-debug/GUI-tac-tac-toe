@@ -95,7 +95,7 @@ int main()
         Vector2f(Pos[2].x, Pos[6].y)                                   // 8
         };
     short LenthPos = std::size(Pos);
-    if (!font.loadFromFile("/usr/share/fonts/gnu-free/FreeSans.ttf")) cout<<"Failed to load font from /usr/share/fonts/gnu-free/FreeSans.ttf"<<endl;
+    if (!font.loadFromFile("./Assets/Fonts/HomeVideo-BLG6G.ttf")) cout<<"Failed to load font from ./Assets/Fonts/HomeVideo-BLG6G.ttf"<<endl;
 
     while (running && window.isOpen()) 
     {

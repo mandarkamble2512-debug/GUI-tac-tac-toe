@@ -13,6 +13,7 @@ using std::async;
 using sf::RenderWindow;
 using sf::Event;
 using sf::Keyboard;
+using sf::Font;
 
 struct CurrentGameState
 {
@@ -22,6 +23,7 @@ struct CurrentGameState
     bool IsVertical        = false;
     bool IsDigonalTopLeft  = false;
     bool IsDigonalTopRight = false;
+    bool IsTie             = false;
     short LinePlace          = 0;
 };
 
@@ -34,6 +36,7 @@ vector<bool> StatusStringDecoder (RenderWindow& window, string Status, CurrentGa
     bool IsVertical        = false;
     bool IsDigonalTopLeft  = false;
     bool IsDigonalTopRight = false;
+    bool IsTie             = false;
 
     for (short i = 0; i < Status.length(); i++)
     {
@@ -50,7 +53,7 @@ vector<bool> StatusStringDecoder (RenderWindow& window, string Status, CurrentGa
                     break;
                     
                 case '0':
-                    DrawTieText(window, font);
+                    
                     break;
                 case '?':
                     // also will do something about this
@@ -108,7 +111,7 @@ vector<bool> StatusStringDecoder (RenderWindow& window, string Status, CurrentGa
         }
     }
 
-    return {HasPlayerWon, HasComputerWon, IsHorizontal, IsVertical, IsDigonalTopLeft, IsDigonalTopRight};
+    return {HasPlayerWon, HasComputerWon, IsHorizontal, IsVertical, IsDigonalTopLeft, IsDigonalTopRight, IsTie};
 }
 
 void CurrentGameStateSetter (RenderWindow& window ,string status, CurrentGameState& state, Font font)
@@ -120,6 +123,8 @@ void CurrentGameStateSetter (RenderWindow& window ,string status, CurrentGameSta
     state.IsVertical        = decoded[3];
     state.IsDigonalTopLeft  = decoded[4];
     state.IsDigonalTopRight = decoded[5];
+    state.IsTie             = decoded[6];
+
 }
 
 string WinnerCheacker (vector<char>& Piece)
