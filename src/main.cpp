@@ -95,7 +95,7 @@ int main()
         Vector2f(Pos[2].x, Pos[6].y)                                   // 8
         };
     short LenthPos = std::size(Pos);
-    if (!font.loadFromFile("./Assets/Fonts/HomeVideo-BLG6G.ttf")) cout<<"Failed to load font from ./Assets/Fonts/HomeVideo-BLG6G.ttf"<<endl;
+    if (!font.loadFromFile("/home/mandar/Documents/full projects/c++/GUI tac tac toe/src/Assets/Fonts/HomeVideo.ttf")) cout<<"Failed to load font from ./Assets/Fonts/HomeVideo-BLG6G.ttf"<<endl;
 
     while (running && window.isOpen()) 
     {
