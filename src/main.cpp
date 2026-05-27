@@ -46,7 +46,8 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
                 if (PlayerMove(event, Piece))
                 {
                     HasPlayerMoved = true;
-                    status = WinnerCheacker(Piece);               
+                    status = WinnerCheacker(Piece);        
+                    // CurrentGameStateSetter(window, status, CurrentGameState, font, StatusStringDecoder(window, status, CurrentGameState, font));       
                 }
             }
         }
@@ -95,7 +96,7 @@ int main()
         Vector2f(Pos[2].x, Pos[6].y)                                   // 8
         };
     short LenthPos = std::size(Pos);
-    if (!font.loadFromFile("/home/mandar/Documents/full projects/c++/GUI tac tac toe/src/Assets/Fonts/HomeVideo.ttf")) cout<<"Failed to load font from ./Assets/Fonts/HomeVideo-BLG6G.ttf"<<endl;
+    if (!font.loadFromFile("./Assets/Fonts/HomeVideo.ttf")) cout<<"Failed to load font from ./Assets/Fonts/HomeVideo-BLG6G.ttf"<<endl;
 
     while (running && window.isOpen()) 
     {

@@ -114,9 +114,8 @@ vector<bool> StatusStringDecoder (RenderWindow& window, string Status, CurrentGa
     return {HasPlayerWon, HasComputerWon, IsHorizontal, IsVertical, IsDigonalTopLeft, IsDigonalTopRight, IsTie};
 }
 
-void CurrentGameStateSetter (RenderWindow& window ,string status, CurrentGameState& state, Font font)
+void CurrentGameStateSetter (RenderWindow& window ,string status, CurrentGameState& state, Font font, vector<bool> decoded)
 {
-    vector<bool> decoded = StatusStringDecoder(window ,status, state, font);
     state.HasPlayerWon      = decoded[0];
     state.HasComputerWon    = decoded[1];
     state.IsHorizontal      = decoded[2];
