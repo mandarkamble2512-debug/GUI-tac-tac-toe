@@ -16,7 +16,7 @@ using std::chrono::milliseconds;
 
 atomic<bool> running(true);
 
-void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved)
+void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state)
 {
     for (short i = 0; i <= 8 ; i++) // for drawing bord
         {
@@ -36,6 +36,17 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             }
         }
         Drawbord(window);
+
+        if (status == "0")
+        {
+            DrawTieText(window, font);
+        }
+        else if (status != "?")
+        {
+            DrawWinningLines(window, state, Pos);
+        }
+        
+        
         
         if (status == "?") // for Player move
         {
@@ -46,8 +57,8 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
                 if (PlayerMove(event, Piece))
                 {
                     HasPlayerMoved = true;
-                    status = WinnerCheacker(Piece);        
-                    // CurrentGameStateSetter(window, status, CurrentGameState, font, StatusStringDecoder(window, status, CurrentGameState, font));       
+                    status = WinnerCheacker(Piece);
+                    StatusStringDecoder(status, state);        
                 }
             }
         }
@@ -58,6 +69,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             {
                 HasComputerMoved = true;
                 status = WinnerCheacker(Piece);
+                StatusStringDecoder(status, state);
             }
         }
         }
@@ -68,7 +80,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             HasComputerMoved = false; 
         }
         
-        DrawTieText(window, font);
+        // DrawTieText(window, font);
 }
 
 int main() 
@@ -79,6 +91,7 @@ int main()
     Event event;
     Font font;
     string status = "?";
+    CurrentGameState state;
     bool HasPlayerMoved = false;
     bool HasComputerMoved = false;
     bool Isspaceleft = true;
@@ -109,7 +122,7 @@ int main()
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
         
-        PlayingState(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved);
+        PlayingState(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved, state);
         
         window.display();
     }
