@@ -68,7 +68,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             HasComputerMoved = false; 
         }
         
-        // DrawTieText(window, font);
+        DrawTieText(window, font);
 }
 
 int main() 

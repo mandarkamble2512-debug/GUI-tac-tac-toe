@@ -26,7 +26,15 @@ void DrawTieText (RenderWindow& window, Font font)
 {
     string draw = "Draw";
     Text text;
-    short TextSize = 260;
+    Text ShadowForText;
+    short TextSize = 300;
+
+    ShadowForText.setCharacterSize(TextSize);
+    ShadowForText.setFont(font);
+    ShadowForText.setString(draw);
+    ShadowForText.setPosition(Vector2f(Vector2f(400, 400)));
+    ShadowForText.setFillColor(Color(0, 0, 0));
+
     text.setCharacterSize(TextSize);
     text.setFont(font);
     text.setString(draw);
@@ -36,6 +44,9 @@ void DrawTieText (RenderWindow& window, Font font)
     FloatRect TextBoundryes = text.getLocalBounds();
     text.setOrigin(Vector2f(TextBoundryes.left + TextBoundryes.width/2, TextBoundryes.top + TextBoundryes.height/2));
 
+    ShadowForText.setOrigin(Vector2f(TextBoundryes.left + TextBoundryes.width/2 + 10, TextBoundryes.top + TextBoundryes.height/2 + 10));
+
+    window.draw(ShadowForText);
     window.draw(text);
 }
 
