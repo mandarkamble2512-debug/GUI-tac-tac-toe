@@ -27,103 +27,38 @@ struct CurrentGameState
     short LinePlace          = 0;
 };
 
-vector<bool> StatusStringDecoder (RenderWindow& window, string Status, CurrentGameState state, Font font)
+void StatusStringDecoder (string Status, CurrentGameState& state)
 {
-    short LinePlace        = 0;
-    bool HasPlayerWon      = false;
-    bool HasComputerWon    = false;
-    bool IsHorizontal      = false;
-    bool IsVertical        = false;
-    bool IsDigonalTopLeft  = false;
-    bool IsDigonalTopRight = false;
-    bool IsTie             = false;
+    state = CurrentGameState();  // reset to defaults first
 
-    for (short i = 0; i < Status.length(); i++)
+    switch (Status[0])
     {
-        if (i == 0)
-        {
-                switch (Status.at(i))
-                {
-                case '1':
-                    HasPlayerWon = true;
-                    break;
-                
-                case '2':
-                    HasComputerWon = true;
-                    break;
-                    
-                case '0':
-                    IsTie = true;
-                    break;
-                case '?':
-                    // also will do something about this
-                    break;
-                }
-        }
-
-        if (i == 1)
-        {
-            switch (Status.at(i))
-            {
-            case 'V':
-                IsVertical = true;
-                break;
-            
-            case 'H':
-                IsHorizontal = true;
-                break;
-            }
-        }
-
-        if (i == 1)
-        {
-            switch (Status.at(i))
-            {
-            case '/':
-                IsDigonalTopRight = true;
-                break;
-            
-            case '|':
-                IsDigonalTopLeft = true;
-                break;
-            }
-        }
-
-        if(i == 2 && IsVertical)
-        {
-            switch (Status.at(i))
-            {
-            case 'l':
-                LinePlace = 1;
-                state.LinePlace = LinePlace;
-                break;
-            
-            case 'm':
-                LinePlace = 2;
-                state.LinePlace = LinePlace;
-                break;
-            
-            case 'r':
-                LinePlace = 3;
-                state.LinePlace = LinePlace;
-                break;
-            }
-        }
+        case '1':
+            state.HasPlayerWon = true; 
+            break;
+        case '2': 
+            state.HasComputerWon = true; 
+            break;
+        case '0': state.IsTie = true; 
+            return;
+        case '?': 
+            return;
     }
 
-    return {HasPlayerWon, HasComputerWon, IsHorizontal, IsVertical, IsDigonalTopLeft, IsDigonalTopRight, IsTie};
-}
+    if (Status.length() > 1)
+    {
+        if      (Status[1] == 'H') state.IsHorizontal     = true;
+        else if (Status[1] == 'V') state.IsVertical        = true;
+        else if (Status[1] == '/') state.IsDigonalTopRight = true;
+        else if (Status[1] == '|') state.IsDigonalTopLeft  = true;
+    }
 
-void CurrentGameStateSetter (RenderWindow& window ,string status, CurrentGameState& state, Font font, vector<bool> decoded)
-{
-    state.HasPlayerWon      = decoded[0];
-    state.HasComputerWon    = decoded[1];
-    state.IsHorizontal      = decoded[2];
-    state.IsVertical        = decoded[3];
-    state.IsDigonalTopLeft  = decoded[4];
-    state.IsDigonalTopRight = decoded[5];
-    state.IsTie             = decoded[6];
-
+    if (Status.length() > 2 && (state.IsVertical || state.IsHorizontal))
+    {
+        if      (Status[2] == 'l' || Status[2] == 't') state.LinePlace = 1;
+        else if (Status[2] == 'm')                      state.LinePlace = 2;
+        else if (Status[2] == 'r' || Status[2] == 'b') state.LinePlace = 3;
+    }
 }
 
 string WinnerCheacker (vector<char>& Piece)
