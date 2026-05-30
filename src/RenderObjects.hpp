@@ -53,8 +53,8 @@ void DrawTieText (RenderWindow& window, Font font)
 void DrawWinningLines (RenderWindow& window, CurrentGameState& State, const Vector2f Pos[])
 {
     Vector2u size = window.getSize();
-    RectangleShape WinningLineHorizontal(Vector2f(size.x - 20, 10));
-    RectangleShape WinningLineVertical(Vector2f(10, size.y - 20));
+    RectangleShape WinningLineHorizontal(Vector2f(size.x - 20, 20));
+    RectangleShape WinningLineVertical(Vector2f(20, size.y - 20));
     RectangleShape WinningLineDigonal(Vector2f(20, 1130));
 
     WinningLineHorizontal.setOrigin(Vector2f((size.x - 20) / 2, 5));
@@ -68,17 +68,17 @@ void DrawWinningLines (RenderWindow& window, CurrentGameState& State, const Vect
     {
         if (State.LinePlace == 1)
         {
-            WinningLineHorizontal.setPosition(Vector2f(10, 65));
+            WinningLineHorizontal.setPosition(Vector2f(size.x / 2.0f, size.y * (1.0f/6.0f)));
             window.draw(WinningLineHorizontal);
         }
         else if (State.LinePlace == 2)
         {
-            WinningLineHorizontal.setPosition(Vector2f(10, 65 + size.y * (1.0f/3.0f)));
+            WinningLineHorizontal.setPosition(Vector2f(size.x / 2.0f, size.y * (3.0f/6.0f)));
             window.draw(WinningLineHorizontal);
         }
         else if (State.LinePlace == 3)
         {
-            WinningLineHorizontal.setPosition(Vector2f(10, 65 + 2 * (size.y * (1.0f/3.0f))));
+            WinningLineHorizontal.setPosition(Vector2f(size.x / 2.0f, size.y * (5.0f/6.0f)));
             window.draw(WinningLineHorizontal);
         }
     }
@@ -86,17 +86,17 @@ void DrawWinningLines (RenderWindow& window, CurrentGameState& State, const Vect
     {
         if (State.LinePlace == 1)
         {
-            WinningLineVertical.setPosition(Vector2f(65, 10));
+            WinningLineVertical.setPosition(Vector2f(size.x * (1.0f/6.0f), size.y / 2.0f));
             window.draw(WinningLineVertical);
         }
         else if (State.LinePlace == 2)
         {
-            WinningLineVertical.setPosition(Vector2f(65 + size.x * (1.0f/3.0f), 10));
+            WinningLineVertical.setPosition(Vector2f(size.x * (3.0f/6.0f), size.y / 2.0f));
             window.draw(WinningLineVertical);
         }
         else if (State.LinePlace == 3)
         {
-            WinningLineVertical.setPosition(Vector2f(65 + 2 * (size.x * (1.0f/3.0f)), 10));
+            WinningLineVertical.setPosition(Vector2f(size.x * (5.0f/6.0f), size.y / 2.0f));
             window.draw(WinningLineVertical);
         }
     }
