@@ -27,20 +27,24 @@ void DrawWinOrLoseText (RenderWindow& window, Font font, CurrentGameState state)
     Text text;
     string Win = "You Won";
     string Lose = "You Lost";
-    int TextSize = 300;
+    // int TextSize;
 
     text.setFont(font);
-    text.setCharacterSize(TextSize);
+    // text.setCharacterSize(TextSize);
     text.setPosition(Vector2f(400, 400));
-    text.setFillColor(Color(0, 200, 115));
+    
 
     if (state.HasPlayerWon)
     {
         text.setString(Win);
+        text.setFillColor(Color(0, 200, 115));
+        text.setCharacterSize(160);
     }
     else if (state.HasComputerWon)
     {
         text.setString(Lose);
+        text.setFillColor(Color(220, 20, 60));
+        text.setCharacterSize(160);
     }
     
     FloatRect TextBoundryes = text.getLocalBounds();
