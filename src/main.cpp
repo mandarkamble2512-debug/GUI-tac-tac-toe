@@ -44,6 +44,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
         else if (status != "?")
         {
             DrawWinningLines(window, state, Pos);
+            DrawWinOrLoseText(window, font, state);
         }
         
         

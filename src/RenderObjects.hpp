@@ -22,6 +22,33 @@ using sf::Font;
 using sf::Text;
 using sf::Keyboard;
 
+void DrawWinOrLoseText (RenderWindow& window, Font font, CurrentGameState state)
+{
+    Text text;
+    string Win = "You Won";
+    string Lose = "You Lost";
+    int TextSize = 300;
+
+    text.setFont(font);
+    text.setCharacterSize(TextSize);
+    text.setPosition(Vector2f(400, 400));
+    text.setFillColor(Color(0, 200, 115));
+
+    if (state.HasPlayerWon)
+    {
+        text.setString(Win);
+    }
+    else if (state.HasComputerWon)
+    {
+        text.setString(Lose);
+    }
+    
+    FloatRect TextBoundryes = text.getLocalBounds();
+    text.setOrigin(TextBoundryes.left + TextBoundryes.width/2, TextBoundryes.top + TextBoundryes.height/2);
+
+    window.draw(text);
+}
+
 void DrawTieText (RenderWindow& window, Font font)
 {
     string draw = "Draw";
@@ -38,7 +65,7 @@ void DrawTieText (RenderWindow& window, Font font)
     text.setCharacterSize(TextSize);
     text.setFont(font);
     text.setString(draw);
-    text.setPosition(Vector2f(Vector2f(400, 400)));
+    text.setPosition(Vector2f(400, 400));
     text.setFillColor(Color(128, 128, 128));
 
     FloatRect TextBoundryes = text.getLocalBounds();
