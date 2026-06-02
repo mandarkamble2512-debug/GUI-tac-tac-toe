@@ -1,0 +1,78 @@
+#include <SFML/Graphics.hpp>
+#include <string>
+#include <vector>
+#include "logic.hpp"
+#include "RenderObjects.hpp"
+
+using sf::RenderWindow;
+using sf::Event;
+using sf::Vector2f;
+using sf::Font;
+using std::string;
+using std::vector;
+
+void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state)
+{
+    for (short i = 0; i <= 8 ; i++) // for drawing bord
+        {
+            switch (Piece[i])
+            {
+            case 'X':
+                DrawX(window, Pos[i]);
+                break;
+            
+            case 'O':
+                DrawO(window, Pos[i]);
+                break;
+
+            default:
+                DrawText(window, Pos[i], Piece[i], font);
+                break;
+            }
+        }
+        Drawbord(window);
+
+        if (status == "0")
+        {
+            DrawTieText(window, font);
+        }
+        else if (status != "?")
+        {
+            DrawWinningLines(window, state, Pos);
+            DrawWinOrLoseText(window, font, state);
+        }
+        
+        
+        
+        if (status == "?") // for Player move
+        {
+        while (!HasPlayerMoved && status == "?" && window.pollEvent(event))
+        {
+            if (event.type == Event::KeyPressed)
+            {
+                if (PlayerMove(event, Piece))
+                {
+                    HasPlayerMoved = true;
+                    status = WinnerCheacker(Piece);
+                    StatusStringDecoder(status, state);        
+                }
+            }
+        }
+
+        while (!HasComputerMoved && status == "?") // for computer move
+        {
+            if(ComputerMove(Piece))
+            {
+                HasComputerMoved = true;
+                status = WinnerCheacker(Piece);
+                StatusStringDecoder(status, state);
+            }
+        }
+        }
+  
+        if (HasPlayerMoved && HasComputerMoved)
+        {
+            HasPlayerMoved   = false;
+            HasComputerMoved = false; 
+        }
+}
