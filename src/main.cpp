@@ -16,12 +16,12 @@ using std::chrono::milliseconds;
 atomic<bool> running(true);
 
 
-void GameStateChanger (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state, GameState CurrentState)
+void GameStateChanger (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font& font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state, GameState CurrentState)
 {
     switch (CurrentState)
     {
     case GameState::Menu:
-        MenuState();
+        MenuState(window, font);
         break;
     
     case GameState::PlayingState:

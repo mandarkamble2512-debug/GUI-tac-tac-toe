@@ -83,7 +83,13 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
         }
 }
 
-void MenuState ()
+void MenuState (RenderWindow& window, Font font)
 {
-    
+    Text text;
+    string Title = "GridLock";
+    short TextSize = 173; 
+
+    text.setString(Title);
+    text.setFont(font);
+    text.setCharacterSize(TextSize);
 }
