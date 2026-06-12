@@ -63,7 +63,7 @@ void DrawTieText (RenderWindow& window, Font font)
     ShadowForText.setCharacterSize(TextSize);
     ShadowForText.setFont(font);
     ShadowForText.setString(draw);
-    ShadowForText.setPosition(Vector2f(Vector2f(400, 400)));
+    ShadowForText.setPosition(Vector2f(400, 400));
     ShadowForText.setFillColor(Color(0, 0, 0));
 
     text.setCharacterSize(TextSize);
