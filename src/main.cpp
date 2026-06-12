@@ -16,8 +16,23 @@ using std::chrono::milliseconds;
 atomic<bool> running(true);
 
 
+void GameStateChanger (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state, GameState CurrentState)
+{
+    switch (CurrentState)
+    {
+    case GameState::Menu:
+        MenuState();
+        break;
+    
+    case GameState::PlayingState:
+        PlayingState(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved, state);
+        break;
+    }
+}
+
 int main() 
 {
+    GameState GameState = GameState::Menu;
     srand(time(NULL));
     RenderWindow window(VideoMode(800, 800), "TIC");
     Vector2u size = window.getSize();
@@ -55,7 +70,7 @@ int main()
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
         
-        PlayingState(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved, state);
+        GameStateChanger(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved, state, GameState);
         
         window.display();
     }

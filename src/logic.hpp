@@ -27,6 +27,7 @@ struct CurrentGameState
     short LinePlace          = 0;
 };
 
+
 void StatusStringDecoder (string Status, CurrentGameState& state)
 {
     state = CurrentGameState();  // reset to defaults first

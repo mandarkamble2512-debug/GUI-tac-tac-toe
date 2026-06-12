@@ -227,6 +227,7 @@ CMakeFiles/TIC.dir/main.cpp.o: \
  /usr/include/c++/15/cstdint /usr/include/c++/15/chrono \
  /usr/include/c++/15/bits/chrono.h /usr/include/c++/15/ratio \
  /usr/include/c++/15/limits /usr/include/c++/15/bits/parse_numbers.h \
+ /home/mandar/Documents/full\ projects/c++/GUI\ tac\ tac\ toe/src/States.hpp \
  /home/mandar/Documents/full\ projects/c++/GUI\ tac\ tac\ toe/src/logic.hpp \
  /usr/include/c++/15/future /usr/include/c++/15/mutex \
  /usr/include/c++/15/bits/std_mutex.h \

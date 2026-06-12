@@ -11,6 +11,12 @@ using sf::Font;
 using std::string;
 using std::vector;
 
+enum class GameState
+{
+    Menu,
+    PlayingState,
+};
+
 void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state)
 {
     for (short i = 0; i <= 8 ; i++) // for drawing bord
@@ -75,4 +81,9 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             HasPlayerMoved   = false;
             HasComputerMoved = false; 
         }
+}
+
+void MenuState ()
+{
+    
 }
