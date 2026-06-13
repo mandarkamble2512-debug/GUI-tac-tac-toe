@@ -89,7 +89,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
         }
 }
 
-void MenuState (RenderWindow& window, Font font, Vector2u& size)
+void MenuState (RenderWindow& window, Font& font, Vector2u& size)
 {
     bool IsPlayButtonSelected = true;
     bool IsQiteButtonSelected = false;
@@ -114,4 +114,6 @@ void MenuState (RenderWindow& window, Font font, Vector2u& size)
         IsPlayButtonSelected = false;
         IsQiteButtonSelected = true;
     }
+
+
 }
