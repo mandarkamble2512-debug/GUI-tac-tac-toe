@@ -214,4 +214,16 @@ void Drawbord(RenderWindow& window)
     window.draw(bord3);
 }
 
+void DrawTitle (RenderWindow& window, Font font, Vector2u Size)
+{
+    Text text;
+    string Title = "GridLock";
+    short TextSize = 165; 
+    Vector2f TitlePos = Vector2f(0, 10);
+    text.setString(Title);
+    text.setFont(font);
+    text.setCharacterSize(TextSize);
+    text.setPosition(TitlePos);
 
+    window.draw(text);
+}

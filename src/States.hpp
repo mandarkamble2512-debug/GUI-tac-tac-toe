@@ -85,14 +85,5 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
 
 void MenuState (RenderWindow& window, Font font, Vector2u& size)
 {
-    Text text;
-    string Title = "GridLock";
-    short TextSize = 165; 
-    Vector2f TitlePos = Vector2f(0, 10);
-    text.setString(Title);
-    text.setFont(font);
-    text.setCharacterSize(TextSize);
-    text.setPosition(TitlePos);
-
-    window.draw(text);
+    DrawTitle(window, font, size);
 }
