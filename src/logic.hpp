@@ -230,15 +230,15 @@ string WinnerCheacker (vector<char>& Piece)
 }
 
 
-bool PlayerMove(sf::Event& event, vector<char>& Piece) 
+bool PlayerMove(Event& event, vector<char>& Piece) 
 {
     if (event.type == sf::Event::KeyPressed) 
     {
         int index = -1;
-        if (event.key.code >= sf::Keyboard::Num1 && event.key.code <= sf::Keyboard::Num9)
-            index = event.key.code - sf::Keyboard::Num1;
-        else if (event.key.code >= sf::Keyboard::Numpad1 && event.key.code <= sf::Keyboard::Numpad9)
-            index = event.key.code - sf::Keyboard::Numpad1;
+        if (event.key.code >= Keyboard::Num1 && event.key.code <= Keyboard::Num9)
+            index = event.key.code - Keyboard::Num1;
+        else if (event.key.code >= Keyboard::Numpad1 && event.key.code <= Keyboard::Numpad9)
+            index = event.key.code - Keyboard::Numpad1;
 
         if (index != -1 && Piece[index] != 'X' && Piece[index] != 'O') 
         {

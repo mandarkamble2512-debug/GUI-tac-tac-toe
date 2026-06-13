@@ -89,7 +89,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
         }
 }
 
-void MenuState (RenderWindow& window, Font& font, Vector2u& size)
+void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event)
 {
     bool IsPlayButtonSelected = true;
     bool IsQiteButtonSelected = false;
@@ -115,5 +115,17 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size)
         IsQiteButtonSelected = true;
     }
 
-
+    if (event.key.code == Keyboard::Up)
+    {
+        switch (SelectedButton)
+        {
+        case MenuScreenButton::Play:
+            SelectedButton = MenuScreenButton::Quite;
+            break;
+        
+        case MenuScreenButton::Quite:
+            SelectedButton = MenuScreenButton::Play;
+            break;
+        }
+    }
 }

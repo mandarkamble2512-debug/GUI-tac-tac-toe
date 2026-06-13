@@ -21,7 +21,7 @@ void GameStateChanger (RenderWindow& window,vector<char>& Piece ,const Vector2f 
     switch (CurrentState)
     {
     case GameState::Menu:
-        MenuState(window, font, size);
+        MenuState(window, font, size, event);
         break;
     
     case GameState::PlayingState:
