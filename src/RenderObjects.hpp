@@ -227,3 +227,41 @@ void DrawTitle (RenderWindow& window, Font font, Vector2u Size)
 
     window.draw(text);
 }
+
+void DrawButton (RenderWindow& window, Font font, string TextOfButton, Vector2f Pos, bool IsSelected)
+{
+    Text text;
+    text.setFont(font);
+    text.setString(TextOfButton);
+    FloatRect Border = text.getLocalBounds();
+    text.setOrigin(Border.left + Border.width/2, Border.top + Border.height/2);
+    text.setPosition(Pos);
+    text.setCharacterSize(30);
+    
+    if (IsSelected)
+    {
+        text.setFillColor(Color::Black);
+    }
+    else if (!IsSelected)
+    {
+       text.setFillColor(Color::White);
+    }
+    
+    RectangleShape ButtonBackground(Vector2f((Border.left + Border.width/2) * 2, (Border.top + Border.height/2) * 2));
+    ButtonBackground.setOrigin(Border.left + Border.width/2, Border.top + Border.height/2);
+    ButtonBackground.setOutlineThickness(5);
+    ButtonBackground.setOutlineColor(Color::White);
+    ButtonBackground.setPosition(Pos);
+
+    if (IsSelected)
+    {
+        ButtonBackground.setFillColor(Color::White);
+    }
+    else if (!IsSelected)
+    {
+        ButtonBackground.setFillColor(Color::Black);
+    }
+
+    window.draw(ButtonBackground);
+    window.draw(text);
+}

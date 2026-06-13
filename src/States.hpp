@@ -86,4 +86,6 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
 void MenuState (RenderWindow& window, Font font, Vector2u& size)
 {
     DrawTitle(window, font, size);
+
+    DrawButton(window, font, "Play", Vector2f(400, 400), false);
 }
