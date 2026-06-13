@@ -17,6 +17,12 @@ enum class GameState
     PlayingState,
 };
 
+enum class MenuScreenButton
+{
+    Play,
+    Quite
+};
+
 void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state)
 {
     for (short i = 0; i <= 8 ; i++) // for drawing bord
@@ -85,7 +91,27 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
 
 void MenuState (RenderWindow& window, Font font, Vector2u& size)
 {
-    DrawTitle(window, font, size);
+    bool IsPlayButtonSelected = true;
+    bool IsQiteButtonSelected = false;
 
-    DrawButton(window, font, "Play", Vector2f(400, 400), false);
+    Vector2f PlayButtonLocation(400, 400);
+    Vector2f QuiteButtonLocation(400, 460);
+
+    MenuScreenButton SelectedButton = MenuScreenButton::Play;
+
+    DrawTitle(window, font, size);
+    DrawButton(window, font, "Play", PlayButtonLocation, IsPlayButtonSelected);
+    DrawButton(window, font, "Quite", QuiteButtonLocation, IsQiteButtonSelected);
+
+    switch (SelectedButton)
+    {
+    case MenuScreenButton::Play:
+        IsPlayButtonSelected = true;
+        IsQiteButtonSelected = false;
+        break;
+    
+    case MenuScreenButton::Quite:
+        IsPlayButtonSelected = false;
+        IsQiteButtonSelected = true;
+    }
 }
