@@ -128,4 +128,17 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event)
             break;
         }
     }
+    if (event.key.code == Keyboard::Down)
+    {
+        switch (SelectedButton)
+        {
+        case MenuScreenButton::Play:
+            SelectedButton = MenuScreenButton::Quite;
+            break;
+        
+        case MenuScreenButton::Quite:
+            SelectedButton = MenuScreenButton::Play;
+            break;
+        }
+    }
 }
