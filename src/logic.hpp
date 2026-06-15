@@ -346,3 +346,27 @@ bool ComputerMove(vector<char>& Piece) // computer uses O
     }
     return HasPlayed;
 }
+
+bool IsUpKeyPressed (Event& event) 
+{
+    if (event.type == Event::KeyPressed) 
+    {
+        if (event.key.code == Keyboard::Up)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool IsDownKeyPressed (Event& event)
+{
+    if (event.type == Event::KeyPressed)
+    {
+        if (event.key.code == Keyboard::Down)
+        {
+            return true;
+        }
+    }
+    return false;
+}

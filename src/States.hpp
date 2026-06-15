@@ -115,30 +115,18 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event)
         IsQiteButtonSelected = true;
     }
 
-    if (event.key.code == Keyboard::Up)
+
+    if (IsDownKeyPressed(event) || IsUpKeyPressed(event))
     {
-        switch (SelectedButton)
-        {
-        case MenuScreenButton::Play:
-            SelectedButton = MenuScreenButton::Quite;
-            break;
-        
-        case MenuScreenButton::Quite:
-            SelectedButton = MenuScreenButton::Play;
-            break;
-        }
-    }
-    if (event.key.code == Keyboard::Down)
-    {
-        switch (SelectedButton)
-        {
-        case MenuScreenButton::Play:
-            SelectedButton = MenuScreenButton::Quite;
-            break;
-        
-        case MenuScreenButton::Quite:
-            SelectedButton = MenuScreenButton::Play;
-            break;
-        }
+            switch (SelectedButton)
+            {
+            case MenuScreenButton::Play:
+                SelectedButton = MenuScreenButton::Quite;
+                break;
+            
+            case MenuScreenButton::Quite:
+                SelectedButton = MenuScreenButton::Play;
+                break;
+            }
     }
 }
