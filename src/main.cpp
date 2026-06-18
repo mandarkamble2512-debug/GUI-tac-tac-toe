@@ -6,6 +6,7 @@
 #include <vector>
 #include "States.hpp"
 
+
 using std::endl;
 using std::cout;
 using std::atomic;
@@ -16,12 +17,12 @@ using std::chrono::milliseconds;
 atomic<bool> running(true);
 
 
-void GameStateChanger (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font& font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state, GameState CurrentState, Vector2u size)
+void GameStateChanger (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font& font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state, GameState CurrentState, Vector2u size, MenuScreenButton& SelectedButton)
 {
     switch (CurrentState)
     {
     case GameState::Menu:
-        MenuState(window, font, size, event);
+        MenuState(window, font, size, event, SelectedButton);
         break;
     
     case GameState::PlayingState:
@@ -33,6 +34,7 @@ void GameStateChanger (RenderWindow& window,vector<char>& Piece ,const Vector2f 
 int main() 
 {
     GameState GameState = GameState::Menu;
+    MenuScreenButton SelectedButton = MenuScreenButton::Play;
     srand(time(NULL));
     RenderWindow window(VideoMode(800, 800), "TIC");
     Vector2u size = window.getSize();
@@ -70,7 +72,7 @@ int main()
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
         
-        GameStateChanger(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved, state, GameState, size);
+        GameStateChanger(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved, state, GameState, size, SelectedButton);
         
         window.display();
     }

@@ -89,7 +89,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
         }
 }
 
-void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event)
+void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, MenuScreenButton& SelectedButton)
 {
     bool IsPlayButtonSelected = true;
     bool IsQiteButtonSelected = false;
@@ -97,11 +97,6 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event)
     Vector2f PlayButtonLocation(400, 400);
     Vector2f QuiteButtonLocation(400, 460);
 
-    MenuScreenButton SelectedButton = MenuScreenButton::Play;
-
-    DrawTitle(window, font, size);
-    DrawButton(window, font, "Play", PlayButtonLocation, IsPlayButtonSelected);
-    DrawButton(window, font, "Quite", QuiteButtonLocation, IsQiteButtonSelected);
 
     switch (SelectedButton)
     {
@@ -129,4 +124,8 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event)
                 break;
             }
     }
+
+    DrawTitle(window, font, size);
+    DrawButton(window, font, "Play", PlayButtonLocation, IsPlayButtonSelected);
+    DrawButton(window, font, "Quite", QuiteButtonLocation, IsQiteButtonSelected);
 }
