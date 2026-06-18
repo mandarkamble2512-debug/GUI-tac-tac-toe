@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <vector>
+#include <thread>
+#include <chrono>
 #include "logic.hpp"
 #include "RenderObjects.hpp"
 
@@ -10,6 +12,9 @@ using sf::Vector2f;
 using sf::Font;
 using std::string;
 using std::vector;
+using std::this_thread::sleep_for;
+using std::chrono::milliseconds;
+
 
 enum class GameState
 {
@@ -124,6 +129,8 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, 
                 break;
             }
     }
+
+    sleep_for(milliseconds(75));
 
     DrawTitle(window, font, size);
     DrawButton(window, font, "Play", PlayButtonLocation, IsPlayButtonSelected);

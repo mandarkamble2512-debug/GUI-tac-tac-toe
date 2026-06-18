@@ -5,11 +5,12 @@
 #include <future>
 #include <vector>
 
+using std::ref;
+using std::this_thread::sleep_for;
+using std::async;
 using std::string;
 using std::vector;
-using std::ref;
-using std::future;
-using std::async;
+using std::chrono::milliseconds;
 using sf::RenderWindow;
 using sf::Event;
 using sf::Keyboard;
