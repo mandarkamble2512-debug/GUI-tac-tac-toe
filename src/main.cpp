@@ -17,12 +17,12 @@ using std::chrono::milliseconds;
 atomic<bool> running(true);
 
 
-void GameStateChanger (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font& font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state, GameState CurrentState, Vector2u size, MenuScreenButton& SelectedButton)
+void GameStateChanger (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font& font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state, GameState& CurrentState, Vector2u size, MenuScreenButton& SelectedButton, bool& HasMenuStateEnded)
 {
     switch (CurrentState)
     {
     case GameState::Menu:
-        MenuState(window, font, size, event, SelectedButton, CurrentState, running);
+        MenuState(window, font, size, event, SelectedButton, CurrentState, running, HasMenuStateEnded);
         break;
     
     case GameState::PlayingState:
@@ -42,9 +42,10 @@ int main()
     Font font;
     string status = "?";
     CurrentGameState state;
-    bool HasPlayerMoved = false;
-    bool HasComputerMoved = false;
-    bool Isspaceleft = true;
+    bool HasPlayerMoved       = false;
+    bool HasComputerMoved     = false;
+    bool Isspaceleft          = true;
+    bool HasMenuStateEnded    = false;
     vector<char> Piece = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     const Vector2f Pos[] = // for defining the cordinates for the X or O
         {
@@ -72,7 +73,7 @@ int main()
         }
         window.clear(Color::Black); // put the rendering code ONLY after this
         
-        GameStateChanger(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved, state, GameState, size, SelectedButton);
+        GameStateChanger(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved, state, GameState, size, SelectedButton, HasMenuStateEnded);
         
         window.display();
     }

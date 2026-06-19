@@ -98,7 +98,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
         }
 }
 
-void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, MenuScreenButton& SelectedButton, GameState& CurrentGameState, atomic<bool>& Running)
+void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, MenuScreenButton& SelectedButton, GameState& CurrentGameState, atomic<bool>& Running, bool& HasMenuStateEnded)
 {
     bool IsPlayButtonSelected = true;
     bool IsQiteButtonSelected = false;
@@ -143,6 +143,7 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, 
         {
         case MenuScreenButton::Play:
             CurrentGameState = GameState::PlayingState;
+            HasMenuStateEnded = true;
             break;
         
         case MenuScreenButton::Quite:
@@ -151,7 +152,10 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, 
         }
     }
 
-    DrawTitle(window, font, size);
-    DrawButton(window, font, "Play", PlayButtonLocation, IsPlayButtonSelected);
-    DrawButton(window, font, "Quite", QuiteButtonLocation, IsQiteButtonSelected);
+    if (!HasMenuStateEnded)
+    {
+        DrawTitle(window, font, size);
+        DrawButton(window, font, "Play", PlayButtonLocation, IsPlayButtonSelected);
+        DrawButton(window, font, "Quite", QuiteButtonLocation, IsQiteButtonSelected);
+    }
 }
