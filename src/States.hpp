@@ -1,8 +1,10 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <atomic>
 #include "logic.hpp"
 #include "RenderObjects.hpp"
 
@@ -10,6 +12,8 @@ using sf::RenderWindow;
 using sf::Event;
 using sf::Vector2f;
 using sf::Font;
+using std::cout;
+using std::atomic;
 using std::string;
 using std::vector;
 using std::this_thread::sleep_for;
@@ -94,7 +98,7 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
         }
 }
 
-void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, MenuScreenButton& SelectedButton)
+void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, MenuScreenButton& SelectedButton, GameState& CurrentGameState, atomic<bool>& Running)
 {
     bool IsPlayButtonSelected = true;
     bool IsQiteButtonSelected = false;
@@ -131,6 +135,21 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, 
     }
 
     sleep_for(milliseconds(75));
+
+    if(IsEnterePressed(event))
+    {
+        cout<<"Key pressed"<<"\n";
+        switch (SelectedButton)
+        {
+        case MenuScreenButton::Play:
+            CurrentGameState = GameState::PlayingState;
+            break;
+        
+        case MenuScreenButton::Quite:
+            Running = false;
+            break;
+        }
+    }
 
     DrawTitle(window, font, size);
     DrawButton(window, font, "Play", PlayButtonLocation, IsPlayButtonSelected);

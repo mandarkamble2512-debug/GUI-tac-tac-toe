@@ -371,3 +371,15 @@ bool IsDownKeyPressed (Event& event)
     }
     return false;
 }
+
+bool IsEnterePressed (Event& event)
+{
+    if (event.type == Event::KeyPressed)
+    {
+        if (event.key.code == Keyboard::Enter)
+        {
+            return true;
+        }
+    }
+    return false;
+}
