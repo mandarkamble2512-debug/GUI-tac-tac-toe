@@ -16,12 +16,3 @@ A gui tac toe made with SFML
 2) Now run the command ```cmake ..``` this shall look something like this
 ![terminal-screenshot](./src/Assets/Screen%20shot/terminal.png)
 3) Now run the command ```cmake --build .``` make sure to add that Dot at the last
-
-##how to get things ready for windows
-1) if you are reading this there are two possiblity
-    -you skipped the section above as told
-    -you tried and failed with an error
-2) either way you came here now to make this code runable you have to change the 20th line from the main function which is like 
-```"/usr/share/fonts/gnu-free/FreeSans.ttf"```
-change the path to like  
-```C:\Windows\Fonts\FreeSans.ttf```
