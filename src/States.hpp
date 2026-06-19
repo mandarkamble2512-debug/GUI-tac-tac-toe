@@ -151,7 +151,7 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, 
         }
     }
 
-        DrawTitle(window, font, size);
-        DrawButton(window, font, "Play", PlayButtonLocation, IsPlayButtonSelected);
-        DrawButton(window, font, "Quite", QuiteButtonLocation, IsQiteButtonSelected);
+    DrawTitle(window, font, size);
+    DrawButton(window, font, "Play", PlayButtonLocation, IsPlayButtonSelected);
+    DrawButton(window, font, "Quite", QuiteButtonLocation, IsQiteButtonSelected);
 }
