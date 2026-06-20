@@ -26,7 +26,7 @@ void GameStateChanger (RenderWindow& window,vector<char>& Piece ,const Vector2f 
         break;
     
     case GameState::PlayingState:
-        PlayingState(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved, state);
+        PlayingState(window, Piece, Pos, event, font, status, HasPlayerMoved, HasComputerMoved, state, CurrentState);
         break;
     }
 }

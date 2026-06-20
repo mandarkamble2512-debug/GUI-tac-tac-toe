@@ -32,7 +32,7 @@ enum class MenuScreenButton
     Quite
 };
 
-void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state)
+void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[],Event& event, Font font, string& status, bool& HasPlayerMoved, bool& HasComputerMoved, CurrentGameState& state, GameState& CurrentState)
 {
     for (short i = 0; i <= 8 ; i++) // for drawing bord
         {
@@ -63,7 +63,10 @@ void PlayingState (RenderWindow& window,vector<char>& Piece ,const Vector2f Pos[
             DrawWinOrLoseText(window, font, state);
         }
         
-        
+        if (IsEscapePressed(event))
+        {
+            CurrentState = GameState::Menu;
+        }
         
         if (status == "?") // for Player move
         {
@@ -138,7 +141,6 @@ void MenuState (RenderWindow& window, Font& font, Vector2u& size, Event& event, 
 
     if(IsEnterePressed(event))
     {
-        cout<<"Key pressed"<<"\n";
         switch (SelectedButton)
         {
         case MenuScreenButton::Play:

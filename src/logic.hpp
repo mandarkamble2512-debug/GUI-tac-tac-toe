@@ -383,3 +383,15 @@ bool IsEnterePressed (Event& event)
     }
     return false;
 }
+
+bool IsEscapePressed (Event& event)
+{
+    if (event.type == Event::KeyPressed)
+    {
+        if (event.key.code == Keyboard::Escape)
+        {
+            return true;
+        }
+    }
+    return false;
+}
